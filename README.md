@@ -40,7 +40,8 @@ Do nhu cầu cập nhật thông tin đó, nhóm xây dựng dịch vụ mạng 
 * **Người dùng (cộng tác viên)** được phép đăng bài viết (*thông qua kiểm duyệt*), quản lý bài viết và thông tin của bản thân.
 * **Người dùng khách** được phép đăng ký, đăng nhập vào hệ thống, xem bài viết (*đã kiểm duyệt*), tìm kiếm bài viết theo chủ đề hoặc nội dung liên quan.
 
-> *Các người dùng khác kế thừa quyền hạn của người dùng khác và các quyền riêng biệt được liệt kê bên trên.*
+> *Các người dùng khác kế thừa quyền hạn của người dùng khách và các quyền riêng biệt được liệt kê bên trên.*
+
 ### 3.2 Hoạt động của hệ thống (tính năng)
 * **Đăng ký:** khi người dùng chưa có tài khoản để đăng nhập vào để sử dụng các tính năng bên trong của hệ thống. Người dùng đăng ký được mặc định kích hoạt tài khoản tự động.
 * **Đăng nhập:** khi người dùng đã được cấp tài khoản, cần xác thực để đăng nhập vào bên trong hệ thống.
