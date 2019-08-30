@@ -19,9 +19,19 @@ Giảng viên: **Châu Ngân Khánh**
 
 # Nội dung thực hiện
 ## 1. Lý do chọn đề tài
+
+Đồng hành cùng sự phát triển của khoa học - công nghệ, lĩnh vực công nghệ thông tin cần được xây dựng phục vụ xã hội nhanh chóng và hiệu quả.
+
+Do nhu cầu cập nhật thông tin đó, nhóm xây dựng dịch vụ mạng quản lý tin tức điện tử trực tuyến làm công cụ cho các nhà biên tập và độc giả.
 ## 2. Mô hình nghiệp vụ
 ## 3. Mô tả hoạt động của hệ thống
 ### 3.1 Người dùng hệ thống (tác nhân)
+* **Quản trị viên** và **Tổng biên tập** được phép toàn quyền quản trị người dùng, chủ đề, tin tức,...
+* **Biên tập viên** được phép kiểm duyệt, quản lý nội dung bài viết.
+* **Người dùng (cộng tác viên)** được phép đăng bài viết (*thông qua kiểm duyệt*), quản lý bài viết và thông tin của bản thân.
+* **Người dùng khách** được phép đăng ký, đăng nhập vào hệ thống, xem bài viết (*đã kiểm duyệt*), tìm kiếm bài viết theo chủ đề hoặc nội dung liên quan.
+
+> *Các người dùng khác kế thừa quyền hạn của người dùng khác và các quyền riêng biệt được liệt kê bên trên.*
 ### 3.2 Hoạt động của hệ thống (tính năng)
 
 # Thông tin kỹ thuật
