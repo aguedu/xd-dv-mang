@@ -55,6 +55,12 @@ Tải mySql-connector-java tại địa chỉ:  https://downloads.mysql.com/arch
 Do you want to continue? [Y/n]`
 Điều này có nghĩa là cần xác nhận khoản trống để cài đặt phpmyadmin. Chúng ta gõ `Y` và `Enter` để tiếp tục cài đặt.
 
+> Sau khi cài đặt, trước khi cấu hình, phpMyAdmin sẽ hỏi chúng ta cần cài đặt chương trình mặc định để cấu hình tự động chạy phpMyAdmin, trong đó có `apache2` và `lighttpd`. Chúng ta đã cài apache2 trước đó, nên bước này chúng ta chọn `apache2` và nhấn `Enter` để phpMyAdmin tự động cấu hình.
+
+> Trong lúc cấu hình, phpMyAdmin sẽ hỏi chúng ta xác nhận cấu hình database mặc định được lưu tại tập tin `dbconfig-common` và lưu trong thư mục `/usr/share/doc/phpmyadmin`. Chúng ta chọn `<Yes>` và nhấn `Enter` để tiếp tục tự động cấu hình.
+
+> Sau khi cấu hình cơ sở dữ liệu, phpMyAdmin lại yêu cầu chúng ta cung cấp mật khẩu mySQL, đặt mật khẩu cho tài khoản `root` và xác nhận lại mật khẩu đã đặt. Ta lần lượt nhập `user` cho từng yêu cầu và nhấn `Enter` để tiến hành cấu hình từng bước cho đến khi hoàn tất.
+
 5. Tải và cài đặt JRE
 
 Đăng ký tài khoản Oracle tại địa chỉ: https://profile.oracle.com/myprofile/account/create-account.jspx
