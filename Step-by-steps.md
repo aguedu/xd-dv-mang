@@ -32,6 +32,17 @@ Tải mySql-server tại địa chỉ: https://downloads.mysql.com/archives/comm
 
 Tải mySql-connector-java tại địa chỉ:  https://downloads.mysql.com/archives/c-j/
 
+4. Tải và cài đặt JRE
+
+Đăng ký tài khoản Oracle tại địa chỉ: https://profile.oracle.com/myprofile/account/create-account.jspx
+
+Tải JRE tại địa chỉ: https://www.oracle.com/technetwork/java/javase/downloads/index.html
+
+5. Tải và cài đặt Eclipse
+
+Do Eclipse Mars (thế hệ 2, phiên bản 4.5) không còn được hỗ trợ nữa. Vì vậy, mình sử dụng bản Eclipse Neon (thế hệ 3).
+Tải Eclipse Neon (thế hệ 3, phiên bản 4.6) tại địa chỉ: https://www.eclipse.org/downloads/packages/release/neon/3
+
 # Thông tin tác giả
 
 [Nguyễn Hoàng Anh Khoa](https://www.facebook.com/nguyenhoanganhkhoacntt)
