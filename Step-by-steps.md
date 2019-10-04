@@ -30,7 +30,7 @@ Tải Apache-Tomcat tại địa chỉ: https://archive.apache.org/dist/tomcat/
 
 Tải mySql-server tại địa chỉ: https://downloads.mysql.com/archives/community/
 
-Tải mySql-connector-java tại địa chỉ: nloads.mysql.com/archives/c-j/
+Tải mySql-connector-java tại địa chỉ:  https://downloads.mysql.com/archives/c-j/
 
 # Thông tin tác giả
 
