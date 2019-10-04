@@ -73,6 +73,8 @@ Bước 4: gõ lệnh `exit;` để thoát ra.
 
 *Lưu ý: để ý chữ ký tự `s` phía sau từ `databases` và dấu chấm phẩy `;` phía sau các câu lệnh.*
 
+Để chạy được `phpMyAdmin` trên giao diện web, chúng ta cần cài đặt khai báo vào Apache2 bằng cách thêm dòng lệnh: `Include /etc/phpmyadmin/apache.conf` vào tập tin cấu hình của Apache2 tại địa chỉ `/etc/apache2/apache2.conf`. (*lưu ý phân biệt chữ I hoa ở đầu dòng*).
+
 5. Tải và cài đặt JRE
 
 Đăng ký tài khoản Oracle tại địa chỉ: https://profile.oracle.com/myprofile/account/create-account.jspx
