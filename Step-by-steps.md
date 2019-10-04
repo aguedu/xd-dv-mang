@@ -22,6 +22,11 @@ Chi tiết xem tại hướng dẫn: [ubuntu-eol.md](https://github.com/aguedu/x
 
 Sử dụng lệnh `sudo apt-get install apache2`
 
+Để kiểm tra việc cài đặt apache2 và phiên bản, ta dùng lệnh: `apache2 -v`
+> Ví dụ, kết quả trả về là:
+ `Server version: Apache/2.4.10 (Ubuntu)`
+ `Server built:   Jul 24 2015 17:25:17` là đã cài đặt thành công Apache phiên bản 2.4.10.
+
 2. Tải và cài đặt Apache-Tomcat
 
 Tải Apache-Tomcat tại địa chỉ: https://archive.apache.org/dist/tomcat/
@@ -36,6 +41,9 @@ Do you want to continue? [Y/n] `
 Sau khi cài đặt mysql-server xong, chương trình sẽ đòi hỏi chúng ta đặt mật khẩu cho mysql-server. Chúng ta nhập mật khẩu là `user`, lặp lại một lần nữa. Tiếp theo, mysql-server sẽ được cấu hình tự động.
 
 Tải mySql-server (thủ công) tại địa chỉ: https://downloads.mysql.com/archives/community/
+
+Để kiểm tra việc cài đặt mysql-server và phiên bản, ta dùng lệnh: `mysql --version`
+> Ví dụ, kết quả trả về là: `mysql  Ver 14.14 Distrib 5.6.28, for debian-linux-gnu (i686) using  EditLine wrapper` là đã cài đặt thành công mysql phiên bản 14.14 (5.6.28)
 
 Tải mySql-connector-java tại địa chỉ:  https://downloads.mysql.com/archives/c-j/
 
