@@ -28,7 +28,13 @@ Tải Apache-Tomcat tại địa chỉ: https://archive.apache.org/dist/tomcat/
 
 3. Tải và cài đặt mySql-server và mySql-connector-java
 
-Tải mySql-server tại địa chỉ: https://downloads.mysql.com/archives/community/
+Để tải và cài đặt mysql-server, dùng lệnh: `sudo apt-get install mysql-server`
+> Trong quá trình cài đặt, nếu có thông báo:
+`After this operation, 150 MB of additional disk space will be used.
+Do you want to continue? [Y/n] ` 
+Điều này có nghĩa là cần xác nhận khoản trống để cài đặt mysql-server. Chúng ta gõ `Y` và `Enter` để tiếp tục cài đặt.
+
+Tải mySql-server (thủ công) tại địa chỉ: https://downloads.mysql.com/archives/community/
 
 Tải mySql-connector-java tại địa chỉ:  https://downloads.mysql.com/archives/c-j/
 
