@@ -71,7 +71,7 @@ Bước 3: gõ lệnh `show databases;` để hiển thị toàn bộ cơ sở d
 
 Bước 4: gõ lệnh `exit;` để thoát ra.
 
-*Lưu ý: để ý chữ ký tự `s` phía sau từ `databases` và dấu chấm phẩy `;` phía sau các câu lệnh.
+*Lưu ý: để ý chữ ký tự `s` phía sau từ `databases` và dấu chấm phẩy `;` phía sau các câu lệnh.*
 
 5. Tải và cài đặt JRE
 
