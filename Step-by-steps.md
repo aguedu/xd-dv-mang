@@ -47,7 +47,15 @@ Tải mySql-server (thủ công) tại địa chỉ: https://downloads.mysql.com
 
 Tải mySql-connector-java tại địa chỉ:  https://downloads.mysql.com/archives/c-j/
 
-4. Tải và cài đặt JRE
+4. Tải và cài đặt phpMyAdmin
+
+Để tải và cài đặt mysql-server, dùng lệnh: `sudo apt-get install phpmyadmin`
+> Trong quá trình cài đặt, nếu có thông báo:
+`After this operation, 69.0 MB of additional disk space will be used.
+Do you want to continue? [Y/n]`
+Điều này có nghĩa là cần xác nhận khoản trống để cài đặt phpmyadmin. Chúng ta gõ `Y` và `Enter` để tiếp tục cài đặt.
+
+5. Tải và cài đặt JRE
 
 Đăng ký tài khoản Oracle tại địa chỉ: https://profile.oracle.com/myprofile/account/create-account.jspx
 
