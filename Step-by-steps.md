@@ -90,6 +90,17 @@ Cài đặt Eclipse bằng lệnh: `sudo apt-get install eclipse`
 Do you want to continue? [Y/n]`
 Điều này có nghĩa là cần xác nhận khoản trống để cài đặt Eclipse. Chúng ta gõ `Y` và `Enter` để tiếp tục cài đặt.
 
+Đó là gói cơ bản Eclipse Platform. Chúng ta có thể cập nhật thêm các gói để trở thành gói Eclipse JEE như sau:
+(*sẽ dịch sau*)
+> You can update classic version for it to be same as Eclipse for J2EE version. The best way (which I know) is:
+  1.In Eclipse go Help -> Install new Software...
+  2.Press Add...
+  3.In address enter http://download.eclipse.org/releases/indigo/ and name - whatever you like.
+  4.Install JavaEE Developer Tools (under "Web, XML, JavaEE, and OSGi Enterprise Tools")
+  5(Optional, but very useful).Install Marketplace Client (General Purpose Tools -> Marketplace Client).
+  That's about it, after this you should have the same environment as client you would download from Eclipse.org.
+(*sẽ dịch sau*)
+
 Do Eclipse Mars (thế hệ 2, phiên bản 4.5) không còn được hỗ trợ nữa. Vì vậy, nếu tải thủ công, mình sử dụng bản Eclipse Neon (thế hệ 3).
 Tải Eclipse Neon (thế hệ 3, phiên bản 4.6) tại địa chỉ: https://www.eclipse.org/downloads/packages/release/neon/3
 
