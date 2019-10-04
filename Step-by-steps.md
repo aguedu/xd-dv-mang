@@ -33,6 +33,7 @@ Tải Apache-Tomcat tại địa chỉ: https://archive.apache.org/dist/tomcat/
 `After this operation, 150 MB of additional disk space will be used.
 Do you want to continue? [Y/n] ` 
 Điều này có nghĩa là cần xác nhận khoản trống để cài đặt mysql-server. Chúng ta gõ `Y` và `Enter` để tiếp tục cài đặt.
+Sau khi cài đặt mysql-server xong, chương trình sẽ đòi hỏi chúng ta đặt mật khẩu cho mysql-server. Chúng ta nhập mật khẩu là `user`, lặp lại một lần nữa. Tiếp theo, mysql-server sẽ được cấu hình tự động.
 
 Tải mySql-server (thủ công) tại địa chỉ: https://downloads.mysql.com/archives/community/
 
