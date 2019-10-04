@@ -69,6 +69,10 @@ Bước 2: gõ mật khẩu đăng nhập (*chúng ta đã đặt là `user` ở
 
 Bước 3: gõ lệnh `show databases;` để hiển thị toàn bộ cơ sở dữ liệu có trong máy chủ mysql-server.
 
+Bước 4: gõ lệnh `exit;` để thoát ra.
+
+*Lưu ý: để ý chữ ký tự `s` phía sau từ `databases` và dấu chấm phẩy `;` phía sau các câu lệnh.
+
 5. Tải và cài đặt JRE
 
 Đăng ký tài khoản Oracle tại địa chỉ: https://profile.oracle.com/myprofile/account/create-account.jspx
