@@ -83,7 +83,14 @@ Tải JRE tại địa chỉ: https://www.oracle.com/technetwork/java/javase/dow
 
 5. Tải và cài đặt Eclipse
 
-Do Eclipse Mars (thế hệ 2, phiên bản 4.5) không còn được hỗ trợ nữa. Vì vậy, mình sử dụng bản Eclipse Neon (thế hệ 3).
+Cài đặt Eclipse bằng lệnh: `sudo apt-get install eclipse`
+
+> Trong khi cài đặt, nếu có thông báo:
+`After this operation, 333 MB of additional disk space will be used.
+Do you want to continue? [Y/n]`
+Điều này có nghĩa là cần xác nhận khoản trống để cài đặt Eclipse. Chúng ta gõ `Y` và `Enter` để tiếp tục cài đặt.
+
+Do Eclipse Mars (thế hệ 2, phiên bản 4.5) không còn được hỗ trợ nữa. Vì vậy, nếu tải thủ công, mình sử dụng bản Eclipse Neon (thế hệ 3).
 Tải Eclipse Neon (thế hệ 3, phiên bản 4.6) tại địa chỉ: https://www.eclipse.org/downloads/packages/release/neon/3
 
 # Thông tin tác giả
