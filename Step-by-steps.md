@@ -61,6 +61,14 @@ Do you want to continue? [Y/n]`
 
 > Sau khi cấu hình cơ sở dữ liệu, phpMyAdmin lại yêu cầu chúng ta cung cấp mật khẩu mySQL, đặt mật khẩu cho tài khoản `root` và xác nhận lại mật khẩu đã đặt. Ta lần lượt nhập `user` cho từng yêu cầu và nhấn `Enter` để tiến hành cấu hình từng bước cho đến khi hoàn tất.
 
+Để kiểm tra phpMyAdmin đã được tạo, chúng ta có thể kiểm tra bằng cách kết nối đến máy chủ cơ sở dữ liệu `mysql` và kiểm tra có tồn tại cơ sở dữ liệu tên `phpmyadmin`. Cách thức như sau:
+
+Bước 1: gõ lệnh `mysql -u root -p` để yêu cầu kết nối đến mysql-server.
+
+Bước 2: gõ mật khẩu đăng nhập (*chúng ta đã đặt là `user` ở bước cài đặt mysql-server*) sau đó nhất `Enter`, để xác thực người dùng.
+
+Bước 3: gõ lệnh `show databases;` để hiển thị toàn bộ cơ sở dữ liệu có trong máy chủ mysql-server.
+
 5. Tải và cài đặt JRE
 
 Đăng ký tài khoản Oracle tại địa chỉ: https://profile.oracle.com/myprofile/account/create-account.jspx
