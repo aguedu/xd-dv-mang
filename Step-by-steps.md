@@ -22,6 +22,16 @@ Chi tiết xem tại hướng dẫn: [ubuntu-eol.md](https://github.com/aguedu/x
 
 Sử dụng lệnh `sudo apt-get install apache2`
 
+2. Tải và cài đặt Apache-Tomcat
+
+Tải Apache-Tomcat tại địa chỉ: https://archive.apache.org/dist/tomcat/
+
+3. Tải và cài đặt mySql-server và mySql-connector-java
+
+Tải mySql-server tại địa chỉ: https://downloads.mysql.com/archives/community/
+
+Tải mySql-connector-java tại địa chỉ: nloads.mysql.com/archives/c-j/
+
 # Thông tin tác giả
 
 [Nguyễn Hoàng Anh Khoa](https://www.facebook.com/nguyenhoanganhkhoacntt)
