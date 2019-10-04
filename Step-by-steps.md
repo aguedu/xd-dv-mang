@@ -2,7 +2,7 @@
 ## Cài đặt
 ### Cài đặt máy ảo và hệ điều hành
 
-1. Cài đặt chương trình máy ảo VMWare Workstation
+1. Cài đặt chương trình máy ảo [VMWare Workstation Pro](https://www.vmware.com/products/workstation-pro.html)
 2. Tạo máy ảo hoặc sử dụng tập tin máy ảo dựng sẵn (vmx)
 3. Cài đặt hệ điều hành Linux Ubuntu Mate (*nếu dùng tập tin máy ảo thì không cần thực hiện bước này*).
 
