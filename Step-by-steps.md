@@ -111,3 +111,6 @@ Tải Eclipse Neon (thế hệ 3, phiên bản 4.6) tại địa chỉ: https://
 # Tài liệu tham khảo
 
 https://gist.github.com/dergachev/f5da514802fcbbb441a1
+https://askubuntu.com/questions/81341/install-eclipse-ide-for-java-ee-dev-via-apt-get-is-it-possible
+https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-ubuntu-18-04
+https://alvinalexander.com/blog/post/mysql/list-tables-in-mysql-database
