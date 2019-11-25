@@ -29,6 +29,12 @@ Sử dụng lệnh `sudo apt-get install apache2`
 
 2. Tải và cài đặt Apache-Tomcat
 
+Tải và cài đặt Apache Tomcat 8 bằng lệnh: `sudo apt-get install tomcat8`
+> Trong quá trình cài đặt, nếu có thông báo:
+`After this operation, 6,192 kB of additional disk space will be used.
+Do you want to continue? [Y/n]`
+Điều này có nghĩa là cần xác nhận khoảng trống để cài đặt Apache-Tomcat-8. Chúng ta gõ `Y` và `Enter` để tiếp tục cài đặt.
+
 Tải Apache-Tomcat tại địa chỉ: https://archive.apache.org/dist/tomcat/
 
 3. Tải và cài đặt mySql-server và mySql-connector-java
