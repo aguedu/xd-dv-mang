@@ -1,8 +1,4 @@
-# Xây dựng Dịch vụ mạng - Trang tin tức
-
 # Yêu cầu thiết kế hệ thống
-
-# Nội dung thực hiện
 ## 1. Cơ sở dữ liệu
 
 
