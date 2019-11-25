@@ -1,6 +1,44 @@
 # Yêu cầu thiết kế hệ thống Trang tin tức
 ## 1. Cơ sở dữ liệu
+### 1.1 Bảng **Người dùng** (tbl_nguoidung)
+| STT | Tên trường | Kiểu DL | Độ dài | Null | Collocation | Extra |
+|:--:|---|---|--|--:|---|---|
+| 1 | __ID__ | int | 10 | Not null |  | auto_increment |
+| 2 | HoVaTen | varchar | 50 | Not null | utf8_unicode_ci | |
+| 3 | TenDangNhap | varchar | 50 | Not null | utf8_unicode_ci | |
+| 4 | MatKhau | varchar | 100 | Not null | utf8_unicode_ci | |
+| 5 | QuyenHan | tinyint | 1 | Not null | | |
+| 6 | Khoa | tinyint | 1 | Not null | | |
 
+*Chú thích:*
+> **Quyền hạn**: `1` là **Admin**, `2` là **User**.
+
+**Khóa**: `1` là **bị khóa**, `0` là **không khóa**.
+ 
+### 1.1 Bảng **Chủ đề** (tbl_chude)
+| STT | Tên trường | Kiểu DL | Độ dài | Null | Collocation | Extra |
+|:--:|---|---|--|--:|---|---|
+| 1 | __ID__ | int | 10 | Not null |  | auto_increment |
+| 2 | TenChuDe | varchar | 100 | Not null | utf8_unicode_ci | |
+
+### 1.1 Bảng **Bài viết** (tbl_baiviet)
+| STT | Tên trường | Kiểu DL | Độ dài | Null | Collocation | Extra |
+|:--:|---|---|--|--:|---|---|
+| 1 | __ID__ | int | 10 | Not null |  | auto_increment |
+| 2 | MaChuDe | int | 10 | Not null | | |
+| 3 | MaNguoiDung | int | 10 | Not null | | |
+| 4 | TieuDe | varchar | 255 | Not null | utf8_unicode_ci | |
+| 5 | Tomtat | text | | Not null | utf8_unicode_ci | |
+| 6 | NoiDung | text | | Not null | utf8_unicode_ci | |
+| 7 | NgayDang | datetime | | Not null | utf8_unicode_ci | |
+| 8 | LuotXem | int | 10 | Not null | | |
+| 9 | KiemDuyet | tinyint | 1 | | | |
+
+*Chú thích:*
+> **Kiểm duyệt**: `1` là **Đã kiểm duyệt**, `0` là **Chưa kiểm duyệt**.
+
+### 1.2 Tạo quan hệ (Relationships)
+*Lưu ý: __Để tạo được ràng buộc quan hệ thì phải lưu dưới dạng `InnoDB`__
 
 ## 2. Mô hình nghiệp vụ
 ### 2.1 Đối với người dùng bên trong hệ thống
@@ -35,6 +73,31 @@
 * **Lọc, tìm kiếm, liệt kê và sắp xếp thông tin người dùng:** Người quản trị và tổng biên tập có quyền lọc, tìm kiếm và liệt kê tất cả các thông tin người dùng, tùy chọn sắp xếp theo thứ tự nào để quản lý.
 
 ## 4. Thiết kế các trang
+### 4.1 Người dùng
+* Đăng ký.
+* Đăng nhập.
+* Đăng xuất.
+* Hồ sơ cá nhân.
+* Đổi mật khẩu.
+* Quản lý người dùng *(Dành cho Admin)*.
+
+### 4.2 Chủ đề *(Dành cho Admin)*
+*	Hiển thị danh sách chủ đề.
+*	Thêm chủ đề.
+*	Cập nhật chủ đề.
+*	Xóa chủ đề.
+
+### 4.3 Bài viết
+*	Hiển thị ra Trang chủ các tin đã được duyệt theo từng chủ đề. Mỗi chủ đề 5 tin.
+*	Xem nhiều nhất.
+*	Tin mới nhất.
+*	Thêm mới bài viết.
+*	Chỉnh sửa bài viết.
+*	Xóa bài viết *(Dành cho Admin)*.
+*	Kiểm duyệt bài viết *(Dành cho Admin)*.
+*	Xem chi tiết bài viết *(Tăng lượt xem khi vào trang chi tiết)*.
+*	Quản lý bài viết *(Dành cho Admin)*.
+*	Quản lý bài viết *(Dành cho User)*.
 
 ## Thành viên thực hiện
 | STT | Mã số sinh viên | Họ và tên lót | Tên | Lớp | Chuyên ngành |
