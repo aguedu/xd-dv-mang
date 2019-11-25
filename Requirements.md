@@ -2,7 +2,7 @@
 ## 1. Cơ sở dữ liệu
 ### 1.1 Bảng **Người dùng** (tbl_nguoidung)
 | STT | Tên trường | Kiểu DL | Độ dài | Null | Collocation | Extra |
-|:--:|---|---|--|--:|---|---|
+|:--:|---|---|---|--:|---|---|
 | 1 | __ID__ | int | 10 | Not null |  | auto_increment |
 | 2 | HoVaTen | varchar | 50 | Not null | utf8_unicode_ci | |
 | 3 | TenDangNhap | varchar | 50 | Not null | utf8_unicode_ci | |
@@ -17,13 +17,13 @@
  
 ### 1.1 Bảng **Chủ đề** (tbl_chude)
 | STT | Tên trường | Kiểu DL | Độ dài | Null | Collocation | Extra |
-|:--:|---|---|--|--:|---|---|
+|:--:|---|---|---|--:|---|---|
 | 1 | __ID__ | int | 10 | Not null |  | auto_increment |
 | 2 | TenChuDe | varchar | 100 | Not null | utf8_unicode_ci | |
 
 ### 1.1 Bảng **Bài viết** (tbl_baiviet)
 | STT | Tên trường | Kiểu DL | Độ dài | Null | Collocation | Extra |
-|:--:|---|---|--|--:|---|---|
+|:--:|---|---|---|--:|---|---|
 | 1 | __ID__ | int | 10 | Not null |  | auto_increment |
 | 2 | MaChuDe | int | 10 | Not null | | |
 | 3 | MaNguoiDung | int | 10 | Not null | | |
@@ -38,7 +38,11 @@
 > **Kiểm duyệt**: `1` là **Đã kiểm duyệt**, `0` là **Chưa kiểm duyệt**.
 
 ### 1.2 Tạo quan hệ (Relationships)
-*Lưu ý: __Để tạo được ràng buộc quan hệ thì phải lưu dưới dạng `InnoDB`__
+| STT | Tên ràng buộc | Tên bảng | Tên trường | Bảng tham chiếu | Trường tham chiếu |
+|:--:|---|---|---|---|---|---|
+| 1 | fk_baiviet_chude | tbl_baiviet | MaChuDe | tbl_chude | ID |
+| 2 | fk_baiviet_nguoidung | tbl_baiviet | MaNguoiDung | tbl_nguoidung | ID |
+*Lưu ý: __Để tạo được ràng buộc quan hệ thì phải lưu dưới dạng `InnoDB`__*
 
 ## 2. Mô hình nghiệp vụ
 ### 2.1 Đối với người dùng bên trong hệ thống
