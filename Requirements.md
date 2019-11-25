@@ -1,4 +1,4 @@
-# Yêu cầu thiết kế hệ thống
+# Yêu cầu thiết kế hệ thống Trang tin tức
 ## 1. Cơ sở dữ liệu
 
 
@@ -36,13 +36,13 @@
 
 ## 4. Thiết kế các trang
 
-# Thành viên thực hiện
+## Thành viên thực hiện
 | STT | Mã số sinh viên | Họ và tên lót | Tên | Lớp | Chuyên ngành |
 |:--:|:--:|---|--|:--:|---|
 | 1 | DTH166270 | Nguyễn Phúc Lâm Trường | Anh | DH17TH | Công nghệ thông tin |
 | 2 | DTH166314 | Trần Minh | Lý | DH17TH | Công nghệ thông tin |
 | 3 | DPM166393 | Nguyễn Hoàng Anh | Khoa | DH17PM | Kỹ thuật phần mềm |
 
-# Thông tin tác giả
+## Thông tin tác giả
 
 [Nguyễn Hoàng Anh Khoa](https://www.facebook.com/nguyenhoanganhkhoacntt)
