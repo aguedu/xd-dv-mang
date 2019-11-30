@@ -106,7 +106,7 @@
 ## Thành viên thực hiện
 | STT | Mã số sinh viên | Họ và tên lót | Tên | Lớp | Chuyên ngành |
 |:--:|:--:|---|--|:--:|---|
-| 1 | DTH166270 | Nguyễn Phúc Lâm Trường | Anh | DH17TH | Công nghệ thông tin |
+| 1 | DTH166270 | Huynh Phúc Lâm Trường | Anh | DH17TH | Công nghệ thông tin |
 | 2 | DTH166314 | Trần Minh | Lý | DH17TH | Công nghệ thông tin |
 | 3 | DPM166393 | Nguyễn Hoàng Anh | Khoa | DH17PM | Kỹ thuật phần mềm |
 
