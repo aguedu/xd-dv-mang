@@ -39,7 +39,7 @@
 
 ### 1.2 Tạo quan hệ (Relationships)
 | STT | Tên ràng buộc | Tên bảng | Tên trường | Bảng tham chiếu | Trường tham chiếu |
-|:--:|---|---|---|---|---|---|
+|:--:|---|---|---|---|---|
 | 1 | fk_baiviet_chude | tbl_baiviet | MaChuDe | tbl_chude | ID |
 | 2 | fk_baiviet_nguoidung | tbl_baiviet | MaNguoiDung | tbl_nguoidung | ID |
 
