@@ -48,7 +48,7 @@ public class NguoiDung extends HttpServlet {
 				String url = "views/NguoiDung/doimatkhau.jsp";
 				RequestDispatcher rd = request.getRequestDispatcher(url);
 				rd.include(request, response);
-			}else if(chon.equals("CapNhat")){
+			}else if(chon.equals("CapNhat") && ((Integer)request.getSession().getAttribute("QuyenHan") == 1)){
 				int id=-1; 
 				try{
 					id = Integer.parseInt(request.getParameter("Id"));
@@ -62,6 +62,18 @@ public class NguoiDung extends HttpServlet {
 					RequestDispatcher rd = request.getRequestDispatcher(url);
 					rd.include(request, response);
 				} // End try catch
+			}else if(chon.equals("Khoa") && ((Integer)request.getSession().getAttribute("QuyenHan") == 1)){
+				// Cap nhat trang thai khoa
+				int id=-1; 
+				try{
+					id = Integer.parseInt(request.getParameter("Id"));
+					if(id != (Integer)request.getSession().getAttribute("IDNguoiDung")){
+						new NguoiDungModel().khoaNguoidung(id);
+					}
+					response.sendRedirect("NguoiDung?Chon=QuanLy"); // Return view NguoiDung/QuanLy
+				}catch(Exception e){
+					response.sendRedirect("NguoiDung?Chon=QuanLy"); // Return view NguoiDung/QuanLy
+				}
 			}else if(chon.equals("DangXuat")){
 				response.sendRedirect("DangXuat");
 			}else{
@@ -71,7 +83,7 @@ public class NguoiDung extends HttpServlet {
 				rd.include(request, response);
 			} // End else if
 		}else{
-			response.sendRedirect("NguoiDung?Chon=QuanLy"); // Trả về QuanLy NguoiDung
+			response.sendRedirect("NguoiDung?Chon=QuanLy"); // Return view NguoiDung/QuanLy
 		}
 	}
 

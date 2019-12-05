@@ -117,4 +117,12 @@ public class NguoiDungModel {
 		 pst.setInt(6, newnd.getId());
 		 return pst.executeUpdate()>0;
 	}
+	
+	// Cap nhat khoa nguoidung theo id
+	public boolean khoaNguoidung(int id) throws Exception{
+		 String sql = "update tbl_nguoidung set Khoa=1-Khoa where ID=?";
+		 PreparedStatement pst = connect.prepareStatement(sql);
+		 pst.setInt(1, id);
+		 return pst.executeUpdate()>0;
+	}
 }
