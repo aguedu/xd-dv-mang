@@ -51,7 +51,7 @@ public class NguoiDung extends HttpServlet {
 			}else if(chon.equals("CapNhat")){
 				int id=-1; 
 				try{
-					id = Integer.parseInt(request.getParameter("id"));
+					id = Integer.parseInt(request.getParameter("Id"));
 					Classes.NguoiDung nd = new NguoiDungModel().getNguoidungByID(id);
 					request.setAttribute("nd", nd);
 					String url = "views/NguoiDung/sua.jsp";
