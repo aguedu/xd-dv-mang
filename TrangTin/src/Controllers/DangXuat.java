@@ -29,6 +29,7 @@ public class DangXuat extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doPost(request, response);
+		System.out.println("(GET /DangXuat) Logout");
 	}
 
 	/**
@@ -39,6 +40,7 @@ public class DangXuat extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		session.invalidate(); // Xóa session;
 		response.sendRedirect(""); // Trở về default;
+		System.out.println("(POST /DangXuat) Logout: success");
 	}
 
 }

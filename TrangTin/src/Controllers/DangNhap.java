@@ -42,13 +42,16 @@ public class DangNhap extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("(GET /DangNhap) Login");
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		String url = "views/NguoiDung/dangnhap.jsp";
 		if(request.getSession().getAttribute("IDNguoiDung") != null){
 			url = "views/layouts/error.jsp";
+			System.out.println("(GET /DangNhap) Login: error");
 		}else{
 			url = "views/NguoiDung/dangnhap.jsp";
+			System.out.println("(GET /DangNhap) Login: wait");
 		} // End else if
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.include(request, response);
@@ -64,6 +67,7 @@ public class DangNhap extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
+		System.out.println("(POST /DangNhap) Login");
 		try{
 			String action = request.getParameter("do");
 			if(action.equals("dangnhap")){
@@ -86,6 +90,7 @@ public class DangNhap extends HttpServlet {
 					session.setAttribute("IDNguoiDung", id);
 					request.setAttribute("loginState","success");
 					response.sendRedirect(""); // Trở về default
+					System.out.println("(POST /DangNhap) Login: success ("+tendangnhap+")");
 				}else{
 					String url = "views/NguoiDung/dangnhap.jsp";
 					// Chuyen huong ve trang o dia chi url
@@ -93,6 +98,7 @@ public class DangNhap extends HttpServlet {
 					request.setAttribute("loginState", "error");
 					RequestDispatcher rd = request.getRequestDispatcher(url);
 					rd.include(request, response);
+					System.out.println("(POST /DangNhap) Login: error ("+tendangnhap+")");
 				} // End else if 
 			} // End if dangnhap
 		}catch(Exception e){

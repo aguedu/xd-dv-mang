@@ -34,7 +34,6 @@ public class BaiViet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		String sapxep = request.getParameter("SapXep");
 		String url = (sapxep.equals("XemNhieu")) ? "views/BaiViet/xemnhieu.jsp" : (sapxep.equals("ChuDe")) ? "views/BaiViet/chude.jsp" : "default.jsp";
-		System.out.println(url);
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.include(request, response);
 	}

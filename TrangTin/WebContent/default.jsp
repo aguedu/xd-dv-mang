@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="java.io.*" %>
+<% System.out.println("(GET /default.jsp) Homepage"); %>
 <%@ include file="views/layouts/viewbegin.jsp" %>
 	<div class="container">
 		<%@ include file="views/layouts/navbar.jsp" %>
