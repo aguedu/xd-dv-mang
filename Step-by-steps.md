@@ -27,15 +27,18 @@ Sử dụng lệnh `sudo apt-get install apache2`
  `Server version: Apache/2.4.10 (Ubuntu)`
  `Server built:   Jul 24 2015 17:25:17` là đã cài đặt thành công Apache phiên bản 2.4.10.
 
-2. Tải và cài đặt Apache-Tomcat
+2. Tải và cài đặt Apache-Tomcat-7
 
-Tải và cài đặt Apache Tomcat 8 bằng lệnh: `sudo apt-get install tomcat8`
+Tải và cài đặt Apache Tomcat 7 bằng lệnh: `sudo apt-get install tomcat7`
+
 > Trong quá trình cài đặt, nếu có thông báo:
 `After this operation, 6,192 kB of additional disk space will be used.
 Do you want to continue? [Y/n]`
-Điều này có nghĩa là cần xác nhận khoảng trống để cài đặt Apache-Tomcat-8. Chúng ta gõ `Y` và `Enter` để tiếp tục cài đặt.
+Điều này có nghĩa là cần xác nhận khoảng trống để cài đặt Apache-Tomcat-7. Chúng ta gõ `Y` và `Enter` để tiếp tục cài đặt.
 
 Tải Apache-Tomcat tại địa chỉ: https://archive.apache.org/dist/tomcat/
+
+> Lưu ý: Quá trình cài đặt tomcat này nếu bạn cài đặt thủ công thì thực hiện. Trên Eclipse 3.8 sẽ hỗ trợ bạn cáu hình Servers cho Apache Tomcat v7.0 tự động tài về, tôi sẽ thực hiện bằng Eclipse.
 
 3. Tải và cài đặt mySql-server và mySql-connector-java
 
@@ -81,7 +84,11 @@ Bước 4: gõ lệnh `exit;` để thoát ra.
 
 Để chạy được `phpMyAdmin` trên giao diện web, chúng ta cần cài đặt khai báo vào Apache2 bằng cách thêm dòng lệnh: `Include /etc/phpmyadmin/apache.conf` vào tập tin cấu hình của Apache2 tại địa chỉ `/etc/apache2/apache2.conf`. (*lưu ý phân biệt chữ `I` hoa ở đầu dòng*).
 
-5. Tải và cài đặt JRE
+5. Tải và cài đặt JDK và JRE: openjdk-6-jdk, openjdk-6-jre
+
+Để tải và cài đặt openjdk-6-jdk, dùng lệnh: `sudo apt-get install openjdk-6-jdk`
+
+Để tải và cài đặt openjdk-6-jre, dùng lệnh: `sudo apt-get install openjdk-6-jre`
 
 Đăng ký tài khoản Oracle tại địa chỉ: https://profile.oracle.com/myprofile/account/create-account.jspx
 
@@ -97,17 +104,16 @@ Do you want to continue? [Y/n]`
 Điều này có nghĩa là cần xác nhận khoảng trống để cài đặt Eclipse. Chúng ta gõ `Y` và `Enter` để tiếp tục cài đặt.
 
 Đó là gói cơ bản Eclipse Platform. Chúng ta có thể cập nhật thêm các gói để trở thành gói Eclipse JEE như sau:
-(*sẽ dịch sau*)
-> You can update classic version for it to be same as Eclipse for J2EE version. The best way (which I know) is:
-  1.In Eclipse go Help -> Install new Software...
-  2.Press Add...
-  3.In address enter http://download.eclipse.org/releases/indigo/ and name - whatever you like.
-  4.Install JavaEE Developer Tools (under "Web, XML, JavaEE, and OSGi Enterprise Tools")
-  5(Optional, but very useful).Install Marketplace Client (General Purpose Tools -> Marketplace Client).
-  That's about it, after this you should have the same environment as client you would download from Eclipse.org.
-(*sẽ dịch sau*)
+* Bạn có thể cập nhật phiên bản cổ điển ban đầu của Eclipse cho nó trở thành phiên bản `Eclipse for J2EE`. Cách làm tốt nhất (theo ý tôi) như sau:
+  
+ 1.Trên Eclipse vào Help -> Install new Software...
+ 2.Bấm Add...
+ 3.Gõ địa chỉ: http://download.eclipse.org/releases/indigo/ hoặc địa chỉ nào khác bạn thích vào `Work with`.
+ 4.Chọn cài đặt JavaEE Developer Tools (bên trong "Web, XML, JavaEE, and OSGi Enterprise Tools")
+ 5.(Tùy chọn, rất hữu ích) Install Marketplace Client (General Purpose Tools -> Marketplace Client).
+ Trên là cách thao tác, sau đó bạn phải đợi hệ thống tự động cài đặt lại cấu hình và tải các gói tin từ Eclipse.org.
 
-Do Eclipse Mars (thế hệ 2, phiên bản 4.5) không còn được hỗ trợ nữa. Vì vậy, nếu tải thủ công, mình sử dụng bản Eclipse Neon (thế hệ 3).
+> Do Eclipse Mars (thế hệ 2, phiên bản 4.5) không còn được hỗ trợ nữa. Vì vậy, nếu tải thủ công, mình sử dụng bản Eclipse Neon (thế hệ 3).
 Tải Eclipse Neon (thế hệ 3, phiên bản 4.6) tại địa chỉ: https://www.eclipse.org/downloads/packages/release/neon/3
 
 6. Tải và cài đặt Git
@@ -121,6 +127,13 @@ Do you want to continue? [Y/n]`
 
 Sau khi cài đặt, để kiểm tra phiên bản Git, gõ lệnh: `git --version`
 Hệ thống báo phiên bản `git version {số hiệu phiên bản}` là được.
+
+# Thông tin kỹ thuật
+* Máy chủ: Apache Tomcat v7.0, openjdk-6-jdk, openjdk-6-jre, mysql server v14.14 Distrib 5.6.28 on Ubuntu MATE Desktop Environment 1.8.2
+* Ngôn ngữ: Java, HTML, CSS, javascript
+* Công nghệ: Servlet, JSP
+* Thư viện: mysql-connector-java-3.0.17-ga-bin, java, javax
+* Công cụ: Eclipse, phpMyAdmin, Git
 
 # Thông tin tác giả
 

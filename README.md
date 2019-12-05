@@ -13,7 +13,7 @@ Giảng viên: **Châu Ngân Khánh**
 # Thành viên thực hiện
 | STT | Mã số sinh viên | Họ và tên lót | Tên | Lớp | Chuyên ngành |
 |:--:|:--:|---|--|:--:|---|
-| 1 | DTH166270 | Nguyễn Phúc Lâm Trường | Anh | DH17TH | Công nghệ thông tin |
+| 1 | DTH166270 | Huỳnh Phúc Lâm Trường | Anh | DH17TH | Công nghệ thông tin |
 | 2 | DTH166314 | Trần Minh | Lý | DH17TH | Công nghệ thông tin |
 | 3 | DPM166393 | Nguyễn Hoàng Anh | Khoa | DH17PM | Kỹ thuật phần mềm |
 
@@ -56,6 +56,8 @@ Do nhu cầu cập nhật thông tin đó, nhóm xây dựng dịch vụ mạng 
 * **Lọc, tìm kiếm, liệt kê và sắp xếp thông tin người dùng:** Người quản trị và tổng biên tập có quyền lọc, tìm kiếm và liệt kê tất cả các thông tin người dùng, tùy chọn sắp xếp theo thứ tự nào để quản lý.
 
 # Thông tin kỹ thuật
-* Máy chủ: Apache Tomcat
+* Máy chủ: Apache Tomcat v7.0, openjdk-6-jdk, openjdk-6-jre, mysql server v14.14 Distrib 5.6.28 on Ubuntu MATE Desktop Environment 1.8.2
 * Ngôn ngữ: Java, HTML, CSS, javascript
 * Công nghệ: Servlet, JSP
+* Thư viện: mysql-connector-java-3.0.17-ga-bin, java, javax
+* Công cụ: Eclipse, phpMyAdmin, Git

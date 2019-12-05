@@ -103,10 +103,16 @@
 *	Quản lý bài viết *(Dành cho Admin)*.
 *	Quản lý bài viết *(Dành cho User)*.
 
+## Dữ liệu kiểm thử ban đầu
+| STT | Tên đăng nhập | Mật khẩu | Quyền hạn | Ghi chú |
+|:--:|:--:|:--:|--:|---|
+| 1 | admin | 123456 | 1 | Quyền Admin, mật khẩu đã băm md5 |
+| 2 | user | 123456 | 2 | Quyền User, mật khẩu đã băm md5 |
+
 ## Thành viên thực hiện
 | STT | Mã số sinh viên | Họ và tên lót | Tên | Lớp | Chuyên ngành |
 |:--:|:--:|---|--|:--:|---|
-| 1 | DTH166270 | Nguyễn Phúc Lâm Trường | Anh | DH17TH | Công nghệ thông tin |
+| 1 | DTH166270 | Huỳnh Phúc Lâm Trường | Anh | DH17TH | Công nghệ thông tin |
 | 2 | DTH166314 | Trần Minh | Lý | DH17TH | Công nghệ thông tin |
 | 3 | DPM166393 | Nguyễn Hoàng Anh | Khoa | DH17PM | Kỹ thuật phần mềm |
 
