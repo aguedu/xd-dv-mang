@@ -85,7 +85,7 @@ public class DangNhap extends HttpServlet {
 					quyenhan = login.getQuyenhannguoidung(tendangnhap, matkhau);
 					session.setAttribute("QuyenHan", quyenhan);
 					id = login.getIdnguoidung(tendangnhap, matkhau);
-					session.setAttribute("ID_NguoiDung", id);
+					session.setAttribute("IDNguoiDung", id);
 					
 					url = homePage;
 				

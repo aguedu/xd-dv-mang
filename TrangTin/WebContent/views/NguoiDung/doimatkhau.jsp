@@ -14,20 +14,23 @@
 			<div class="card-body">
 				<form action="NguoiDung" method="post">
 				  <div class="form-group">
-				    <label for="txtHoVaTen">Họ và tên</label>
-				    <input type="text" class="form-control" id="txtHoVaTen" name="txtHoVaTen" aria-describedby="txtHoVaTenHelp" value="<%= nd.getHovaten() %>" required>
-				    <small id="txtHoVaTenHelp" class="form-text text-muted d-none">Họ và tên không hợp lệ.</small>
-				  </div>	
-				  <div class="form-group">
 				    <label for="txtTenDangNhap">Tên đăng nhập</label>
 				    <input type="text" class="form-control" id="txtTenDangNhap" name="txtTenDangNhap" aria-describedby="txtTenDangNhapHelp" value="<%= nd.getTendangnhap() %>" readonly>
 				    <small id="txtTenDangNhapHelp" class="form-text text-muted d-none">Tên đăng nhập không hợp lệ.</small>
 				  </div>
 				  <div class="form-group">
+				    <label for="txtMatKhauCu">Mật khẩu cũ</label>
+				    <input type="password" class="form-control" id="txtMatKhauCu" name="txtMatKhauCu">
+				  </div>
+				  <div class="form-group">
+				    <label for="txtMatKhauMoi">Mật khẩu mới</label>
+				    <input type="password" class="form-control" id="txtMatKhauMoi" name="txtMatKhauMoi">
+				  </div>
+				  <div class="form-group">
 				    <label for="txtXacNhanMatKhau">Xác nhận mật khẩu</label>
 				    <input type="password" class="form-control" id="txtXacNhanMatKhau" name="txtXacNhanMatKhau">
 				  </div>
-				  <input type="hidden" name="do" value="CapNhatHoSo"/>
+				  <input type="hidden" name="do" value="DoiMatKhau"/>
 				  <button type="submit" class="btn btn-success">Cập nhật</button>  
 				</form>
 			</div>

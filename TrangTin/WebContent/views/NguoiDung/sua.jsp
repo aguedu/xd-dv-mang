@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="Classes.*" %>
 <%@ page import="Models.*" %>
-<% NguoiDung nd = new NguoiDungModel().getNguoidungByID((Integer)request.getSession().getAttribute("IDNguoiDung")); %>
+<%@ page import="javax.servlet.http.HttpServletResponse" %>
+<% NguoiDung nd = (NguoiDung)request.getAttribute("nd"); %>
+<% /* NguoiDung đã được gán vào biến nd trên controller nên không cần khai báo lại 
+	TUYỆT ĐỐI KHÔNG ĐƯỢC dispatch view này khi chưa khai báo biến nd */ %>
 <!DOCTYPE html>
 <html>
 <%@ include file="../layouts/header.jsp" %>
@@ -24,10 +27,15 @@
 				    <small id="txtTenDangNhapHelp" class="form-text text-muted d-none">Tên đăng nhập không hợp lệ.</small>
 				  </div>
 				  <div class="form-group">
+				    <label for="txtMatKhau">Mật khẩu</label>
+				    <input type="password" class="form-control" id="txtMatKhau" name="txtMatKhau">
+				  </div>
+				  <div class="form-group">
 				    <label for="txtXacNhanMatKhau">Xác nhận mật khẩu</label>
 				    <input type="password" class="form-control" id="txtXacNhanMatKhau" name="txtXacNhanMatKhau">
 				  </div>
-				  <input type="hidden" name="do" value="CapNhatHoSo"/>
+				  <input type="hidden" name="id" value="<%= nd.getId() %>"/>
+				  <input type="hidden" name="do" value="CapNhat"/>
 				  <button type="submit" class="btn btn-success">Cập nhật</button>  
 				</form>
 			</div>

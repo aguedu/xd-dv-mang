@@ -26,7 +26,7 @@
 				    <input type="password" class="form-control" id="txtMatKhau" name="txtMatKhau">
 				  </div>
 				  <div class="form-group">
-				    <label for="txtXacNhanMatKhau">Mật khẩu</label>
+				    <label for="txtXacNhanMatKhau">Xác nhận mật khẩu</label>
 				    <input type="password" class="form-control" id="txtXacNhanMatKhau" name="txtXacNhanMatKhau">
 				  </div>
 				  <input type="hidden" name="do" value="dangky"/>

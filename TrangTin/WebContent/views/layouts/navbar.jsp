@@ -19,8 +19,8 @@
 		  </a>
 		  <div class="dropdown-menu" aria-labelledby="dropdownLinkChuDe">
 		  	<% // Lay danh sach cac san pham bang cach goi ham da dinh nghia trong Model
-				ArrayList<ChuDe> lst = new ChuDeModel().getDSChude();
-		  	for(ChuDe cd : lst){
+				ArrayList<ChuDe> lstChuDe = new ChuDeModel().getDSChude();
+		  	for(ChuDe cd : lstChuDe){
 		  	%>
 		  		<a class="dropdown-item" href="BaiViet?SapXep=ChuDe&ChuDe=<%=cd.getId()%>"><%=cd.getTenchude()%></a>
 		    <% } // End for %>
