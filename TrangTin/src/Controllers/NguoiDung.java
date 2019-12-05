@@ -111,20 +111,23 @@ public class NguoiDung extends HttpServlet {
 		// TODO Auto-generated method stub
 		System.out.println("(POST /NguoiDung) NguoiDung");
 		response.setContentType("text/html; charset=UTF-8");
+		String url = "views/layouts/error.jsp";
 		String chon = request.getParameter("do");
-		String oldPassword = request.getParameter("txtMatKhauCu");
-		String newPassword = request.getParameter("txtMatKhauMoi");
-		String confirmPassword = request.getParameter("txtXacNhanMatKhau");
-		System.out.println("do="+chon+"&oldPassword="+oldPassword+"&newPassword="+newPassword+"&confirmPassword="+confirmPassword);
-		if(chon!=null){
-			if(chon.equals("DoiMatKhau") && (request.getSession().getAttribute("IDNguoiDung") != null) && oldPassword != null && newPassword != null && confirmPassword != null && !oldPassword.equals(newPassword) && newPassword.equals(confirmPassword)){
+		if(chon.equals("DoiMatKhau")){
+			url = "views/NguoiDung/doimatkhau.jsp";
+			String oldPassword = request.getParameter("txtMatKhauCu");
+			String newPassword = request.getParameter("txtMatKhauMoi");
+			String confirmPassword = request.getParameter("txtXacNhanMatKhau");
+			if((request.getSession().getAttribute("IDNguoiDung") != null) && oldPassword != null && newPassword != null && confirmPassword != null && !oldPassword.equals(newPassword) && newPassword.equals(confirmPassword)){
 				System.out.println("(POST /NguoiDung?do=DoiMatKhau) DoiMatKhau");
 				int id = (Integer)request.getSession().getAttribute("IDNguoiDung");
 				try {
 					if(new NguoiDungModel().changeMatkhau(id, oldPassword, newPassword)){
 						request.setAttribute("resetpasswordState", "success");
 						System.out.println("(POST /NguoiDung?do=DoiMatKhau) DoiMatKhau: success");
-					}else{
+						RequestDispatcher rd = request.getRequestDispatcher(url);
+						rd.include(request, response);
+					} else {
 						request.setAttribute("resetpasswordState", "error");
 						System.out.println("(POST /NguoiDung?do=DoiMatKhau) DoiMatKhau: error");
 					}
@@ -133,14 +136,18 @@ public class NguoiDung extends HttpServlet {
 					request.setAttribute("resetpasswordState", "error");
 					System.out.println("(POST /NguoiDung?do=DoiMatKhau) DoiMatKhau: error: "+e.getMessage());
 				}
-			}else{
+			} else {
 				request.setAttribute("resetpasswordState", "error");
 				System.out.println("(POST /NguoiDung?do=DoiMatKhau) DoiMatKhau: error");
 			}
-			String url = "views/NguoiDung/doimatkhau.jsp";
-			RequestDispatcher rd = request.getRequestDispatcher(url);
-			rd.include(request, response);
+		} else if(chon.equals("CapNhatHoSo")){
+			url = "views/NguoiDung/suahoso.jsp";
+			request.setAttribute("updateState", "success");
+			System.out.println("(POST /NguoiDung?do=CapNhatHoSo) CapNhatHoSo: success");
+		} else {
+			response.sendRedirect("");
 		}
+		RequestDispatcher rd = request.getRequestDispatcher(url);
+		rd.include(request, response);
 	}
-
 }

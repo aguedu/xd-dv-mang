@@ -7,7 +7,7 @@
 		<%@ include file="../layouts/navbar.jsp" %>
 		
 		<div class="card mt-3 shadow-sm">
-			<h5 class="card-header alert-warning">Hồ sơ cá nhân</h5>
+			<h5 class="card-header alert-warning">Thay đổi thông tin tài khoản</h5>
 			<div class="card-body">
 				<%	String resetpasswordState = (String)request.getAttribute("resetpasswordState"); 
 					if(resetpasswordState != null){ 
@@ -20,7 +20,7 @@
 				</div>
 				<% }else{ %>
 				<div class="alert alert-danger alert-dismissible fade show" role="alert">
-				  <span>Cập nhật thông tin thất bại. Vui lòng thử lại sau!</span>
+				  <span>Cập nhật thông tin thất bại. Vui lòng thử lại!</span>
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 					    <span aria-hidden="true">&times;</span>
 					</button>
@@ -34,17 +34,18 @@
 				  </div>
 				  <div class="form-group">
 				    <label for="txtMatKhauCu">Mật khẩu cũ</label>
-				    <input type="password" class="form-control" id="txtMatKhauCu" name="txtMatKhauCu" required>
+				    <input type="password" class="form-control" id="txtMatKhauCu" name="txtMatKhauCu" oninput="$('#txtMatKhauCuHelp').addClass('d-none');" required>
 				    <small id="txtMatKhauCuHelp" class="form-text text-danger d-none">Bắt buộc phải nhập đúng mật khẩu cũ.</small>
 				  </div>
 				  <div class="form-group">
 				    <label for="txtMatKhauMoi">Mật khẩu mới</label>
-				    <input type="password" class="form-control" id="txtMatKhauMoi" name="txtMatKhauMoi" required>
+				    <input type="password" class="form-control" id="txtMatKhauMoi" name="txtMatKhauMoi" oninput="$('#txtMatKhauMoiHelp').addClass('d-none');$('#txtXacNhanMatKhauHelp').addClass('d-none');" required>
+				    <small id="txtMatKhauMoiHelp" class="txttxtXacNhanMatKhauHelp form-text text-danger d-none">Mật khẩu mới không hợp lệ.</small>
 				  </div>
 				  <div class="form-group">
 				    <label for="txtXacNhanMatKhau">Xác nhận mật khẩu</label>
-				    <input type="password" class="form-control" id="txtXacNhanMatKhau" name="txtXacNhanMatKhau" required>
-				    <small id="txtXacNhanMatKhauHelp" class="form-text text-danger d-none">Xác nhận mật khẩu không trùng khớp.</small>
+				    <input type="password" class="form-control" id="txtXacNhanMatKhau" name="txtXacNhanMatKhau" oninput="$('#txtXacNhanMatKhauHelp').addClass('d-none');" required>
+				    <small id="txtXacNhanMatKhauHelp" class="txttxtXacNhanMatKhauHelp form-text text-danger d-none">Xác nhận mật khẩu không hợp lệ.</small>
 				  </div>
 				  <input type="hidden" name="do" value="DoiMatKhau"/>
 				  <button type="submit" class="btn btn-success" onclick="doChange()">Cập nhật</button>  
@@ -59,7 +60,15 @@
 		if($.trim($("#txtMatKhauCu").val()).length === 0){
 			$("#txtMatKhauCuHelp").removeClass("d-none");
 		}
+		if($.trim($("#txtMatKhauMoi").val()).length === 0){
+			$("#txtMatKhauMoiHelp").removeClass("d-none");
+		}
+		if($.trim($("#txtXacNhanMatKhau").val()).length === 0){
+			$("#txtXacNhanMatKhauHelp").removeClass("d-none");
+		}
 		if($("#txtMatKhauMoi").val() !== $("#txtXacNhanMatKhau").val()){
+			$("#txtXacNhanMatKhau").val("");
+			$("#txtXacNhanMatKhauHelp").text("Xác nhận mật khẩu không trùng khớp.");
 			$("#txtXacNhanMatKhauHelp").removeClass("d-none");
 		}
 	}

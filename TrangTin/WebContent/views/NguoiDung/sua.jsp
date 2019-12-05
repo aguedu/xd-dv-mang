@@ -12,6 +12,24 @@
 		<div class="card mt-3 shadow-sm">
 			<h5 class="card-header alert-warning">Hồ sơ cá nhân</h5>
 			<div class="card-body">
+				<%	String updateState = (String)request.getAttribute("updateState"); 
+					if(updateState != null){ 
+						if(updateState.equals("success")){ %>
+				<div class="alert alert-success alert-dismissible fade show" role="alert">
+				  <span>Cập nhật thông tin thành công!</span>
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					    <span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<% }else{ %>
+				<div class="alert alert-danger alert-dismissible fade show" role="alert">
+				  <span>Cập nhật thông tin thất bại. Vui lòng thử lại!</span>
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					    <span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<% } // End if error
+				} // End if null %>
 				<form action="NguoiDung" method="post">
 				  <div class="form-group">
 				    <label for="txtHoVaTen">Họ và tên</label>

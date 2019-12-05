@@ -127,15 +127,15 @@ public class NguoiDungModel {
 	}
 	
 	// Kiem tra mat khau nguoidung theo id truoc khi doi mat khau
-		public boolean checkMatkhau(int id, String password) throws Exception{
-			 String sql = "select ID from tbl_nguoidung where ID=? AND MatKhau=md5(?)";
-			 PreparedStatement pst = connect.prepareStatement(sql);
-			 pst.setInt(1, id);
-			 pst.setString(2, password);
-			 ResultSet rs = pst.executeQuery();
-			 return (rs.next());
-		}
-		
+	public boolean checkMatkhau(int id, String password) throws Exception{
+		 String sql = "select ID from tbl_nguoidung where ID=? AND MatKhau=md5(?)";
+		 PreparedStatement pst = connect.prepareStatement(sql);
+		 pst.setInt(1, id);
+		 pst.setString(2, password);
+		 ResultSet rs = pst.executeQuery();
+		 return (rs.next());
+	}
+	
 	// Doi mat khau nguoidung theo id
 	public boolean changeMatkhau(int id, String oldPassword, String newPassword) throws Exception{
 		 if(checkMatkhau(id, oldPassword)){
