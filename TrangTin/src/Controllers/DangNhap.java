@@ -24,10 +24,7 @@ public class DangNhap extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-	final private String errorPage="views/NguoiDung/dangnhap.jsp";
-	final private String homePage="default.jsp";
-	
-	
+
     public DangNhap() {
         super();
         // TODO Auto-generated constructor stub
@@ -47,10 +44,10 @@ public class DangNhap extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		String url = errorPage;
+		String url = "views/NguoiDung/dangnhap.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.include(request, response);
-	}
+	} // End method doGet
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -63,19 +60,15 @@ public class DangNhap extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		try{
-			String url = "";
 			String action = request.getParameter("do");
 			if(action.equals("dangnhap")){
 				String tendangnhap = request.getParameter("txtTenDangNhap");
 				String matkhau = request.getParameter("txtMatKhau");
 				DangNhapModel login = new DangNhapModel();
 				boolean result = login.checkLogin(tendangnhap, matkhau);
-				
 				String hovaten;
 				int quyenhan;
 				int id;
-							
-				
 				if(result){
 					// Dang nhap thanh cong thi tao cac session cho nguoi dung da dang nhap
 					HttpSession session = request.getSession(true);
@@ -86,18 +79,19 @@ public class DangNhap extends HttpServlet {
 					session.setAttribute("QuyenHan", quyenhan);
 					id = login.getIdnguoidung(tendangnhap, matkhau);
 					session.setAttribute("IDNguoiDung", id);
-					
-					url = homePage;
-				
-				}
-				else url = errorPage;
-				// Chuyen huong ve trang o dia chi url	
-				RequestDispatcher rd = request.getRequestDispatcher(url);
-				rd.include(request, response);
-			}
-		}
-		catch(Exception e){
+					request.setAttribute("loginState","success");
+					response.sendRedirect(""); // Trở về default
+				}else{
+					String url = "views/NguoiDung/dangnhap.jsp";
+					// Chuyen huong ve trang o dia chi url
+					request.setAttribute("oldUsername", tendangnhap);
+					request.setAttribute("loginState", "error");
+					RequestDispatcher rd = request.getRequestDispatcher(url);
+					rd.include(request, response);
+				} // End else if 
+			} // End if dangnhap
+		}catch(Exception e){
 				e.printStackTrace();
-		}
-	}
+		} // End try catch
+	} // End method doPost
 }
