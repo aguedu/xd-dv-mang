@@ -2,7 +2,6 @@ package Controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -113,37 +112,60 @@ public class NguoiDung extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		String url = "views/layouts/error.jsp";
 		String chon = request.getParameter("do");
+		Integer id = (request.getSession().getAttribute("IDNguoiDung")!=null) ? ((Integer)request.getSession().getAttribute("IDNguoiDung")) : -1;
 		if(chon.equals("DoiMatKhau")){
 			url = "views/NguoiDung/doimatkhau.jsp";
 			String oldPassword = request.getParameter("txtMatKhauCu");
 			String newPassword = request.getParameter("txtMatKhauMoi");
 			String confirmPassword = request.getParameter("txtXacNhanMatKhau");
-			if((request.getSession().getAttribute("IDNguoiDung") != null) && oldPassword != null && newPassword != null && confirmPassword != null && !oldPassword.equals(newPassword) && newPassword.equals(confirmPassword)){
+			if( id != -1 && oldPassword != null && newPassword != null && confirmPassword != null && !oldPassword.equals(newPassword) && newPassword.equals(confirmPassword)){
 				System.out.println("(POST /NguoiDung?do=DoiMatKhau) DoiMatKhau");
-				int id = (Integer)request.getSession().getAttribute("IDNguoiDung");
 				try {
-					if(new NguoiDungModel().changeMatkhau(id, oldPassword, newPassword)){
-						request.setAttribute("resetpasswordState", "success");
-						System.out.println("(POST /NguoiDung?do=DoiMatKhau) DoiMatKhau: success");
-						RequestDispatcher rd = request.getRequestDispatcher(url);
-						rd.include(request, response);
-					} else {
+					if(!new NguoiDungModel().changeMatkhau(id, oldPassword, newPassword)){
 						request.setAttribute("resetpasswordState", "error");
 						System.out.println("(POST /NguoiDung?do=DoiMatKhau) DoiMatKhau: error");
-					}
+					} // End if
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					request.setAttribute("resetpasswordState", "error");
 					System.out.println("(POST /NguoiDung?do=DoiMatKhau) DoiMatKhau: error: "+e.getMessage());
-				}
-			} else {
-				request.setAttribute("resetpasswordState", "error");
-				System.out.println("(POST /NguoiDung?do=DoiMatKhau) DoiMatKhau: error");
-			}
+				} // End try catch
+			} // End if
+			request.setAttribute("resetpasswordState", "success");
+			System.out.println("(POST /NguoiDung?do=DoiMatKhau) DoiMatKhau: success");
 		} else if(chon.equals("CapNhatHoSo")){
 			url = "views/NguoiDung/suahoso.jsp";
-			request.setAttribute("updateState", "success");
-			System.out.println("(POST /NguoiDung?do=CapNhatHoSo) CapNhatHoSo: success");
+			String oldHovaten = (String)request.getSession().getAttribute("HoVaTen");
+			String newHovaten =  request.getParameter("txtHoVaTen");
+			String xacnhanMatkhau = request.getParameter("txtXacNhanMatKhau");
+			System.out.println("(POST /NguoiDung?do=CapNhatHoSo) pre CapNhatHoSo");
+			System.out.println("id="+id+"&xacnhanMatkhau="+xacnhanMatkhau+"&newHovaten="+newHovaten+"&oldHovaten="+oldHovaten);
+			if(id != -1 && xacnhanMatkhau != null && newHovaten != null && !newHovaten.equals(oldHovaten)){
+				System.out.println("(POST /NguoiDung?do=CapNhatHoSo) CapNhatHoSo");
+				try {
+					if(!(new NguoiDungModel().checkMatkhau(id, xacnhanMatkhau))){
+						request.setAttribute("updateState", "error");
+						System.out.println("(POST /NguoiDung?do=CapNhatHoSo) CapNhatHoSo: error");
+					} else {
+						NguoiDungModel ndModel = new NguoiDungModel();
+						Classes.NguoiDung newnd = ndModel.getNguoidungByID(id);
+						newnd.setHovaten(newHovaten);
+						newnd.setMatkhau(xacnhanMatkhau);
+						if(!ndModel.updateNguoidung(id, newnd)){
+							request.setAttribute("updateState", "error");
+							System.out.println("(POST /NguoiDung?do=CapNhatHoSo) CapNhatHoSo: error");
+						}else{
+							request.getSession(true).setAttribute("HoVaTen",new String(newHovaten.getBytes("ISO-8859-1"),"UTF-8"));
+						} // End else if
+					} // End else if
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					request.setAttribute("updateState", "error");
+					System.out.println("(POST /NguoiDung?do=CapNhatHoSo) CapNhatHoSo: error: "+e.getMessage());
+				}
+				request.setAttribute("updateState", "success");
+				System.out.println("(POST /NguoiDung?do=CapNhatHoSo) CapNhatHoSo: success");
+			}
 		} else {
 			response.sendRedirect("");
 		}

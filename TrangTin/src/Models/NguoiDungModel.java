@@ -107,7 +107,7 @@ public class NguoiDungModel {
 	}
 	// Cap nhat nguoidung theo id
 	public boolean updateNguoidung(int id,NguoiDung newnd) throws Exception{
-		 String sql = "update tbl_nguoidung set HoVaTen=?, TenDangNhap=?, MatKhau=md5(?), QuyenHan=?, Khoa=? where ID=?";
+		 String sql = "update tbl_nguoidung set HoVaTen=N?, TenDangNhap=?, MatKhau=md5(?), QuyenHan=?, Khoa=? where ID=?";
 		 PreparedStatement pst = connect.prepareStatement(sql);
 		 pst.setString(1, newnd.getHovaten());
 		 pst.setString(2, newnd.getTendangnhap());
