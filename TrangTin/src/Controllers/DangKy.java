@@ -43,10 +43,10 @@ public class DangKy extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		String url = "views/NguoiDung/dangky.jsp";
-		if(request.getSession().getAttribute("IDNguoiDung") != null){
-			url = "views/layouts/error.jsp";
-		}else{
+		if((Integer)request.getSession().getAttribute("QuyenHan") == 1){
 			url = "views/NguoiDung/dangky.jsp";
+		}else{
+			url = "views/layouts/error.jsp";
 		} // End else if
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.include(request, response);
