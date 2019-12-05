@@ -2,13 +2,10 @@
 <%@ page import="Classes.*" %>
 <%@ page import="Models.*" %>
 <%@ page import="javax.servlet.http.HttpServletResponse" %>
-<% NguoiDung nd = (NguoiDung)request.getAttribute("nd"); %>
-<% /* NguoiDung đã được gán vào biến nd trên controller nên không cần khai báo lại 
+<% NguoiDung nd = (NguoiDung)request.getAttribute("nd"); 
+	/* NguoiDung đã được gán vào biến nd trên controller nên không cần khai báo lại 
 	TUYỆT ĐỐI KHÔNG ĐƯỢC dispatch view này khi chưa khai báo biến nd */ %>
-<!DOCTYPE html>
-<html>
-<%@ include file="../layouts/header.jsp" %>
-<body class="alert-success">
+<%@ include file="../layouts/viewbegin.jsp" %>
 	<div class="container">
 		<%@ include file="../layouts/navbar.jsp" %>
 		
@@ -42,6 +39,5 @@
 		</div>
 		<%@ include file="../layouts/footer.jsp" %>
 	</div>
-</body>
 <%@ include file="../layouts/javascript.jsp" %>
-</html>
+<%@ include file="../layouts/viewend.jsp" %>

@@ -1,9 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<%@ include file="../layouts/header.jsp" %>
-<body class="alert-success">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="../layouts/viewbegin.jsp" %>
 	<div class="container">
 		<%@ include file="../layouts/navbar.jsp" %>
 		
@@ -17,6 +13,5 @@
 		</div>
 		<%@ include file="../layouts/footer.jsp" %>
 	</div>
-</body>
 <%@ include file="../layouts/javascript.jsp" %>
-</html>
+<%@ include file="../layouts/viewend.jsp" %>

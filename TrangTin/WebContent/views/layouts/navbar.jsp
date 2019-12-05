@@ -8,7 +8,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarTogglerTrangTin">
-    <a class="navbar-brand" href="/TrangTin"><img src="img/leaf.png" height="32"> Báo lá cải</a>
+    <a class="navbar-brand" href="/TrangTin"><img src="img/leaf.png" height="32" /> Báo lá cải</a>
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 	    <li class="nav-item">
 	        <a class="nav-link" href="BaiViet?SapXep=XemNhieu"><i class="fas fa-fw fa-fire-alt"></i> Xem nhiều nhất</a>

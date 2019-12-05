@@ -2,10 +2,7 @@
 <%@ page import="Classes.*" %>
 <%@ page import="Models.*" %>
 <% NguoiDung nd = new NguoiDungModel().getNguoidungByID((Integer)request.getSession().getAttribute("IDNguoiDung")); %>
-<!DOCTYPE html>
-<html>
-<%@ include file="../layouts/header.jsp" %>
-<body class="alert-success">
+<%@ include file="../layouts/viewbegin.jsp" %>
 	<div class="container">
 		<%@ include file="../layouts/navbar.jsp" %>
 		
@@ -34,6 +31,5 @@
 		</div>
 		<%@ include file="../layouts/footer.jsp" %>
 	</div>
-</body>
 <%@ include file="../layouts/javascript.jsp" %>
-</html>
+<%@ include file="../layouts/viewend.jsp" %>

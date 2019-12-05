@@ -21,7 +21,7 @@ public class Connect {
 			System.out.println("Connect success!");
 		}
 		catch (SQLException e) {
-			 throw new Exception(e.getMessage() + "Connect failed to database .... ");
+			 throw new Exception("Connect failed: " + e.getMessage());
 		 }
 	}
 
