@@ -42,6 +42,7 @@
 |:--:|---|---|---|---|---|---|
 | 1 | fk_baiviet_chude | tbl_baiviet | MaChuDe | tbl_chude | ID |
 | 2 | fk_baiviet_nguoidung | tbl_baiviet | MaNguoiDung | tbl_nguoidung | ID |
+
 *Lưu ý: __Để tạo được ràng buộc quan hệ thì phải lưu dưới dạng `InnoDB`__*
 
 ## 2. Mô hình nghiệp vụ
