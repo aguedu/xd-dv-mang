@@ -86,7 +86,7 @@ public class ChuDeModel {
 		 ChuDe cd = null;
 		 if(rs.next()){
 			 int idcd = rs.getInt("ID");
-			 String tenchude = rs.getString("HoVaTen");
+			 String tenchude = rs.getString("TenChuDe");
 			 cd = new ChuDe(idcd, tenchude);
 		 }
 		 return cd;

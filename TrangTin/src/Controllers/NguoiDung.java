@@ -248,7 +248,7 @@ public class NguoiDung extends HttpServlet {
 				}
 			}
 		}else {
-			response.sendRedirect("");
+			url = "views/layouts/error.jsp";
 		}
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.include(request, response);

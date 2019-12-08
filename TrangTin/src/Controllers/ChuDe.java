@@ -64,9 +64,26 @@ public class ChuDe extends HttpServlet {
 					String url = "views/layouts/error.jsp";
 					RequestDispatcher rd = request.getRequestDispatcher(url);
 					rd.include(request, response);
-					System.out.println("(GET /ChuDe?Chon=CapNhat) CapNhat: error");
+					System.out.println("(GET /ChuDe?Chon=CapNhat) CapNhat: error: "+e.getMessage());
 				} // End try catch
-			}else{
+			}else if(chon.equals("Xoa")){
+				System.out.println("(GET /ChuDe?Chon=Xoa) Xoa");
+				int id=-1; 
+				try{
+					id = Integer.parseInt(request.getParameter("Id"));
+					new ChuDeModel().deleteChude(id);
+					System.out.println("(GET /ChuDe?Chon=Xoa) Xoa: success");
+					String url = "views/ChuDe/danhsach.jsp";
+					request.setAttribute("deleteState", "success");
+					RequestDispatcher rd = request.getRequestDispatcher(url);
+					rd.include(request, response);
+				}catch(Exception e){
+					String url = "views/layouts/error.jsp";
+					RequestDispatcher rd = request.getRequestDispatcher(url);
+					rd.include(request, response);
+					System.out.println("(GET /ChuDe?Chon=Xoa) Xoa: error: "+e.getMessage());
+				} // End try catch
+			} else {
 				// Chọn khác
 				System.out.println("(GET /ChuDe?Chon="+chon+") ChuDe: error");
 				String url = "views/layouts/error.jsp";
@@ -89,13 +106,54 @@ public class ChuDe extends HttpServlet {
 		String url = "views/layouts/error.jsp";
 		String chon = request.getParameter("do");
 		// Khai báo biến dữ liệu từ view
-		String password = request.getParameter("txtChuDe");
+		String tenChude = request.getParameter("txtTenChuDe");
+		Integer id = Integer.parseInt(request.getParameter("id"));
 		// Khai báo Model dùng chung
 		ChuDeModel cdModel = null;
 		// Khai báo Class trung chuyển dữ liệu dùng chung 
 		Classes.ChuDe cd = new Classes.ChuDe();
-
-		Integer id = (request.getSession().getAttribute("IDNguoiDung")!=null) ? ((Integer)request.getSession().getAttribute("IDNguoiDung")) : -1;
+		Integer logedInId = (request.getSession().getAttribute("IDNguoiDung")!=null) ? ((Integer)request.getSession().getAttribute("IDNguoiDung")) : -1;
+		if(chon.equals("Them")){
+			System.out.println("(POST /ChuDe?do=Them) Them");
+			if(tenChude != null){
+				System.out.println("(POST /ChuDe?do=Them) Them: wait");
+				cd = new Classes.ChuDe();
+				cd.setTenchude(tenChude);
+				try {
+					cdModel = new ChuDeModel();
+					cdModel.insertChude(cd);
+					url = "views/ChuDe/danhsach.jsp";
+					request.setAttribute("insertState", "success");
+					System.out.println("(POST /ChuDe?do=Them) Them: success");
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					url = "views/ChuDe/them.jsp";
+					request.setAttribute("insertState", "error");
+					System.out.println("(POST /ChuDe?do=Them) Them: error: "+e.getMessage());
+				}
+			}
+		} else if(chon.equals("CapNhat")){
+			System.out.println("(POST /ChuDe?do=CapNhat) CapNhat");
+			if(tenChude != null){
+				try {
+					cdModel = new ChuDeModel();
+					cd.setTenchude(tenChude);
+					cd.setId(id);
+					cdModel.updateChude(id, cd);
+					url = "views/ChuDe/danhsach.jsp";
+					request.setAttribute("updateState", "success");
+					System.out.println("(POST /ChuDe?do=CapNhat) Them: success");
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					url = "views/ChuDe/sua.jsp";
+					request.setAttribute("updateState", "error");
+					System.out.println("(POST /ChuDe?do=CapNhat) CapNhat: error: "+e.getMessage());
+				}
+			}
+		} else {
+			url = "views/layouts/error.jsp";
+		}
+		RequestDispatcher rd = request.getRequestDispatcher(url);
+		rd.include(request, response);
 	}
-
 }
