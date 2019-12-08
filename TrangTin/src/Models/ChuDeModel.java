@@ -51,7 +51,7 @@ public class ChuDeModel {
 	// Them du lieu vao tbl_nguoidung
 	// Tra ve true neu them thanh cong
 	public boolean insertChude(ChuDe cd) throws Exception{
-		 String sql = "insert into tbl_chude(TenChuDe) values(?)";
+		 String sql = "insert into tbl_chude(TenChuDe) values(N?)";
 		 PreparedStatement pst = connect.prepareStatement(sql);
 		 pst.setString(1, cd.getTenchude());
 		 
@@ -93,7 +93,7 @@ public class ChuDeModel {
 	}
 	// Cap nhat nguoidung theo id
 	public boolean updateChude(int id,ChuDe newnd) throws Exception{
-		 String sql = "update tbl_chude set TenChuDe=? where ID=?";
+		 String sql = "update tbl_chude set TenChuDe=N? where ID=?";
 		 PreparedStatement pst = connect.prepareStatement(sql);
 		 pst.setString(1, newnd.getTenchude());
 		 pst.setInt(2, newnd.getId());

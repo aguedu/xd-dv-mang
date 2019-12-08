@@ -83,6 +83,19 @@ public class ChuDe extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("(POST /ChuDe) ChuDe");
+		response.setContentType("text/html; charset=UTF-8");
+		// Khai báo biến điều hướng
+		String url = "views/layouts/error.jsp";
+		String chon = request.getParameter("do");
+		// Khai báo biến dữ liệu từ view
+		String password = request.getParameter("txtChuDe");
+		// Khai báo Model dùng chung
+		ChuDeModel cdModel = null;
+		// Khai báo Class trung chuyển dữ liệu dùng chung 
+		Classes.ChuDe cd = new Classes.ChuDe();
+
+		Integer id = (request.getSession().getAttribute("IDNguoiDung")!=null) ? ((Integer)request.getSession().getAttribute("IDNguoiDung")) : -1;
 	}
 
 }

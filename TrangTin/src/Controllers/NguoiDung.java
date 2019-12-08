@@ -142,19 +142,21 @@ public class NguoiDung extends HttpServlet {
 		String loginName = request.getParameter("txtTenDangNhap");
 		String khoa = request.getParameter("khoa");		// Khai báo dữ liệu bên trong phiên
 		String oldUserName = (String)request.getSession().getAttribute("HoVaTen");
+		Integer id = (request.getParameter("id") != null) ? Integer.parseInt(request.getParameter("id")) : null;
+
 		// Khai báo Model dùng chung
 		NguoiDungModel ndModel = null;
 		// Khai báo Class trung chuyển dữ liệu dùng chung 
 		Classes.NguoiDung nd = new Classes.NguoiDung();
 
-		Integer id = (request.getSession().getAttribute("IDNguoiDung")!=null) ? ((Integer)request.getSession().getAttribute("IDNguoiDung")) : -1;
+		Integer logedInId = (request.getSession().getAttribute("IDNguoiDung")!=null) ? ((Integer)request.getSession().getAttribute("IDNguoiDung")) : null;
 		if(chon.equals("DoiMatKhau")){
 			System.out.println("(POST /NguoiDung?do=DoiMatKhau) DoiMatKhau");
 			url = "views/NguoiDung/doimatkhau.jsp";
-			if( id != -1 && oldPassword != null && newPassword != null && confirmPassword != null && !oldPassword.equals(newPassword) && newPassword.equals(confirmPassword)){
+			if( logedInId != null && oldPassword != null && newPassword != null && confirmPassword != null && !oldPassword.equals(newPassword) && newPassword.equals(confirmPassword)){
 				System.out.println("(POST /NguoiDung?do=DoiMatKhau) DoiMatKhau: wait");
 				try {
-					if(!new NguoiDungModel().changeMatkhau(id, oldPassword, newPassword)){
+					if(!new NguoiDungModel().changeMatkhau(logedInId, oldPassword, newPassword)){
 						request.setAttribute("resetpasswordState", "error");
 						System.out.println("(POST /NguoiDung?do=DoiMatKhau) DoiMatKhau: error");
 					} // End if
@@ -170,19 +172,19 @@ public class NguoiDung extends HttpServlet {
 			System.out.println("(POST /NguoiDung?do=CapNhatHoSo) CapNhatHoSo");
 			url = "views/NguoiDung/suahoso.jsp";
 			// System.out.println("id="+id+"&xacnhanMatkhau="+xacnhanMatkhauCapNhatHoSo+"&newHovaten="+newHovaten+"&oldHovaten="+oldHovaten);
-			if(id != -1 && confirmPassword != null && userName != null && !userName.equals(oldUserName)){
+			if(logedInId != -1 && confirmPassword != null && userName != null && !userName.equals(oldUserName)){
 				System.out.println("(POST /NguoiDung?do=CapNhatHoSo) CapNhatHoSo: wait");
 				try {
-					if(!(new NguoiDungModel().checkMatkhau(id, confirmPassword))){
+					if(!(new NguoiDungModel().checkMatkhau(logedInId, confirmPassword))){
 						request.setAttribute("updateState", "error");
 						System.out.println("(POST /NguoiDung?do=CapNhatHoSo) CapNhatHoSo: error");
 					} else {
 						ndModel = new NguoiDungModel();
 						nd = new Classes.NguoiDung();
-						nd = ndModel.getNguoidungByID(id);
+						nd = ndModel.getNguoidungByID(logedInId);
 						nd.setHovaten(userName);
 						nd.setMatkhau(confirmPassword);
-						if(!ndModel.updateNguoidung(id, nd)){
+						if(!ndModel.updateNguoidung(logedInId, nd)){
 							request.setAttribute("updateState", "error");
 							System.out.println("(POST /NguoiDung?do=CapNhatHoSo) CapNhatHoSo: error");
 						}else{
@@ -210,7 +212,7 @@ public class NguoiDung extends HttpServlet {
 					nd.setTendangnhap(loginName);
 					nd.setKhoa(Integer.parseInt(khoa));
 					nd.setMatkhau(password);
-					ndModel.updateNguoidung(id, nd);
+					ndModel.insertNguoidung(nd);
 					request.setAttribute("registerState", "success");
 					System.out.println("(POST /NguoiDung?do=Them) Them: success");
 				} catch (Exception e){
@@ -221,7 +223,7 @@ public class NguoiDung extends HttpServlet {
 		} else if (chon.equals("CapNhat")) {
 			System.out.println("(POST /NguoiDung?do=CapNhat) CapNhat");
 			url = "views/NguoiDung/sua.jsp";
-			if(role != null && userName != null && khoa != null){
+			if(role != null && userName != null && khoa != null && id != null){
 				System.out.println("(POST /NguoiDung?do=CapNhat) CapNhat: wait");
 				try{
 					ndModel = new NguoiDungModel();
@@ -229,7 +231,6 @@ public class NguoiDung extends HttpServlet {
 					nd.setQuyenhan(Integer.parseInt(role));
 					nd.setHovaten(userName);
 					nd.setTendangnhap(loginName);
-					id = Integer.parseInt(request.getParameter("id"));
 					nd.setId(id);
 					if(password != null && password.equals(confirmPassword)){
 						nd.setMatkhau(password);
