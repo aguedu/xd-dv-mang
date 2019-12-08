@@ -40,13 +40,16 @@ public class DangKy extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("(GET /DangKy) DangKy");
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		String url = "views/NguoiDung/dangky.jsp";
-		if((Integer)request.getSession().getAttribute("QuyenHan") == 1){
+		if(request.getSession().getAttribute("QuyenHan") == null || (Integer)request.getSession().getAttribute("QuyenHan") == 1){
 			url = "views/NguoiDung/dangky.jsp";
+			System.out.println("(GET /DangKy) DangKy: wait");
 		}else{
 			url = "views/layouts/error.jsp";
+			System.out.println("(GET /DangKy) DangKy: error");
 		} // End else if
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.include(request, response);
@@ -57,6 +60,19 @@ public class DangKy extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("(POST /DangKy) DangKy");
+		String url = "views/layouts/error.jsp";
+		Classes.DangKy dk = new Classes.DangKy();
+		try {
+			DangKyModel dkModel = new DangKyModel();
+			dkModel.insertDangky(dk);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			request.setAttribute("registerState", "error");
+			System.out.println("(POST /DangKy) DangKy: error: "+e.getMessage());
+			url = "views/NguoiDung/dangky.jsp";
+		}
+		RequestDispatcher rd = request.getRequestDispatcher(url);
+		rd.include(request, response);
 	}
-
 }

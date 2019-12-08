@@ -2,6 +2,8 @@ package Controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+
+import javax.print.attribute.ResolutionSyntax;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,6 +37,7 @@ public class NguoiDung extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		String chon = request.getParameter("Chon");
+		int id=-1;
 		if(chon!=null){
 			if(chon.equals("QuanLy") && ((Integer)request.getSession().getAttribute("QuyenHan") == 1)){
 				System.out.println("(GET /NguoiDung?Chon=QuanLy) QuanLy");
@@ -54,9 +57,11 @@ public class NguoiDung extends HttpServlet {
 				RequestDispatcher rd = request.getRequestDispatcher(url);
 				rd.include(request, response);
 				System.out.println("(GET /NguoiDung?Chon=DoiMatKhau) DoiMatKhau: wait");
+			}else if(chon.equals("DangKy")){
+				System.out.println("(GET /NguoiDung?Chon=DangKy) DangKy");
+				response.sendRedirect("DangKy"); // Return DangKy 
 			}else if(chon.equals("CapNhat") && ((Integer)request.getSession().getAttribute("QuyenHan") == 1)){
-				System.out.println("(GET /NguoiDung?Chon=CapNhat) NguoiDung/CapNhat");
-				int id=-1; 
+				System.out.println("(GET /NguoiDung?Chon=CapNhat) CapNhat");
 				try{
 					id = Integer.parseInt(request.getParameter("Id"));
 					Classes.NguoiDung nd = new NguoiDungModel().getNguoidungByID(id);
@@ -74,7 +79,6 @@ public class NguoiDung extends HttpServlet {
 			}else if(chon.equals("Khoa") && ((Integer)request.getSession().getAttribute("QuyenHan") == 1)){
 				// Cap nhat trang thai khoa
 				System.out.println("(GET /NguoiDung?Chon=Khoa) Khoa");
-				int id=-1; 
 				try{
 					id = Integer.parseInt(request.getParameter("Id"));
 					if(id != (Integer)request.getSession().getAttribute("IDNguoiDung")){
@@ -91,6 +95,20 @@ public class NguoiDung extends HttpServlet {
 			}else if(chon.equals("DangXuat")){
 				System.out.println("(GET /NguoiDung?Chon=DangXuat) DangXuat");
 				response.sendRedirect("DangXuat");
+			}else if(chon.equals("Xoa") && ((Integer)request.getSession().getAttribute("QuyenHan") == 1)){
+				System.out.println("(GET /NguoiDung?Chon=Xoa) Xoa");
+				try {
+					NguoiDungModel ndModel = new NguoiDungModel();
+					id = Integer.parseInt(request.getParameter("Id"));
+					ndModel.deleteNguoidung(id);
+					request.setAttribute("deleteState", "success");
+					System.out.println("(GET /NguoiDung?do=Xoa) Xoa: success");
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					request.setAttribute("deleteState", "error");
+					System.out.println("(GET /NguoiDung?do=Xoa) Xoa: error: "+e.getMessage());
+				}
+				response.sendRedirect("NguoiDung?Chon=QuanLy");
 			}else{
 				// Chọn khác
 				System.out.println("(GET /NguoiDung?Chon="+chon+") NguoiDung: error");
@@ -110,16 +128,31 @@ public class NguoiDung extends HttpServlet {
 		// TODO Auto-generated method stub
 		System.out.println("(POST /NguoiDung) NguoiDung");
 		response.setContentType("text/html; charset=UTF-8");
+		// Khai báo biến điều hướng
 		String url = "views/layouts/error.jsp";
 		String chon = request.getParameter("do");
+		// Khai báo biến dữ liệu từ view
+		String password = request.getParameter("txtMatKhau");
+		String oldPassword = request.getParameter("txtMatKhauCu");
+		String newPassword = request.getParameter("txtMatKhauMoi");
+		String confirmPassword = request.getParameter("txtXacNhanMatKhau");
+		String userName = request.getParameter("txtHoVaTen");
+		if (userName != null) { userName = new String(userName.getBytes("ISO-8859-1"),"UTF-8"); } // Chuyển định dạng văn bản Encode UTF-8 
+		String role = request.getParameter("selectQuyenHan");
+		String loginName = request.getParameter("txtTenDangNhap");
+		// Khai báo dữ liệu bên trong phiên
+		String oldUserName = (String)request.getSession().getAttribute("HoVaTen");
+		// Khai báo Model dùng chung
+		NguoiDungModel ndModel = null;
+		// Khai báo Class trung chuyển dữ liệu dùng chung 
+		Classes.NguoiDung nd = new Classes.NguoiDung();
+
 		Integer id = (request.getSession().getAttribute("IDNguoiDung")!=null) ? ((Integer)request.getSession().getAttribute("IDNguoiDung")) : -1;
 		if(chon.equals("DoiMatKhau")){
+			System.out.println("(POST /NguoiDung?do=DoiMatKhau) DoiMatKhau");
 			url = "views/NguoiDung/doimatkhau.jsp";
-			String oldPassword = request.getParameter("txtMatKhauCu");
-			String newPassword = request.getParameter("txtMatKhauMoi");
-			String confirmPassword = request.getParameter("txtXacNhanMatKhau");
 			if( id != -1 && oldPassword != null && newPassword != null && confirmPassword != null && !oldPassword.equals(newPassword) && newPassword.equals(confirmPassword)){
-				System.out.println("(POST /NguoiDung?do=DoiMatKhau) DoiMatKhau");
+				System.out.println("(POST /NguoiDung?do=DoiMatKhau) DoiMatKhau: wait");
 				try {
 					if(!new NguoiDungModel().changeMatkhau(id, oldPassword, newPassword)){
 						request.setAttribute("resetpasswordState", "error");
@@ -134,28 +167,28 @@ public class NguoiDung extends HttpServlet {
 			request.setAttribute("resetpasswordState", "success");
 			System.out.println("(POST /NguoiDung?do=DoiMatKhau) DoiMatKhau: success");
 		} else if(chon.equals("CapNhatHoSo")){
+			System.out.println("(POST /NguoiDung?do=CapNhatHoSo) CapNhatHoSo");
 			url = "views/NguoiDung/suahoso.jsp";
-			String oldHovaten = (String)request.getSession().getAttribute("HoVaTen");
-			String newHovaten =  request.getParameter("txtHoVaTen");
-			String xacnhanMatkhau = request.getParameter("txtXacNhanMatKhau");
-			System.out.println("(POST /NguoiDung?do=CapNhatHoSo) pre CapNhatHoSo");
-			System.out.println("id="+id+"&xacnhanMatkhau="+xacnhanMatkhau+"&newHovaten="+newHovaten+"&oldHovaten="+oldHovaten);
-			if(id != -1 && xacnhanMatkhau != null && newHovaten != null && !newHovaten.equals(oldHovaten)){
-				System.out.println("(POST /NguoiDung?do=CapNhatHoSo) CapNhatHoSo");
+			// System.out.println("id="+id+"&xacnhanMatkhau="+xacnhanMatkhauCapNhatHoSo+"&newHovaten="+newHovaten+"&oldHovaten="+oldHovaten);
+			if(id != -1 && confirmPassword != null && userName != null && !userName.equals(oldUserName)){
+				System.out.println("(POST /NguoiDung?do=CapNhatHoSo) CapNhatHoSo: wait");
 				try {
-					if(!(new NguoiDungModel().checkMatkhau(id, xacnhanMatkhau))){
+					if(!(new NguoiDungModel().checkMatkhau(id, confirmPassword))){
 						request.setAttribute("updateState", "error");
 						System.out.println("(POST /NguoiDung?do=CapNhatHoSo) CapNhatHoSo: error");
 					} else {
-						NguoiDungModel ndModel = new NguoiDungModel();
-						Classes.NguoiDung newnd = ndModel.getNguoidungByID(id);
-						newnd.setHovaten(newHovaten);
-						newnd.setMatkhau(xacnhanMatkhau);
-						if(!ndModel.updateNguoidung(id, newnd)){
+						ndModel = new NguoiDungModel();
+						nd = new Classes.NguoiDung();
+						nd = ndModel.getNguoidungByID(id);
+						nd.setHovaten(userName);
+						nd.setMatkhau(confirmPassword);
+						if(!ndModel.updateNguoidung(id, nd)){
 							request.setAttribute("updateState", "error");
 							System.out.println("(POST /NguoiDung?do=CapNhatHoSo) CapNhatHoSo: error");
 						}else{
-							request.getSession(true).setAttribute("HoVaTen",new String(newHovaten.getBytes("ISO-8859-1"),"UTF-8"));
+							request.getSession(true).setAttribute("HoVaTen",userName);
+							request.setAttribute("updateState", "success");
+							System.out.println("(POST /NguoiDung?do=CapNhatHoSo) CapNhatHoSo: success");
 						} // End else if
 					} // End else if
 				} catch (Exception e) {
@@ -163,10 +196,29 @@ public class NguoiDung extends HttpServlet {
 					request.setAttribute("updateState", "error");
 					System.out.println("(POST /NguoiDung?do=CapNhatHoSo) CapNhatHoSo: error: "+e.getMessage());
 				}
-				request.setAttribute("updateState", "success");
-				System.out.println("(POST /NguoiDung?do=CapNhatHoSo) CapNhatHoSo: success");
 			}
-		} else {
+		}else if(chon.equals("Them")){
+			System.out.println("(POST /NguoiDung?do=Them) Them");
+			url = "views/NguoiDung/dangky.jsp";
+			if(role != null && loginName != null && userName != null && password != null && password.equals(confirmPassword))
+			{
+				System.out.println("(POST /NguoiDung?do=Them) Them: wait");
+				try{
+					ndModel = new NguoiDungModel();
+					nd = new Classes.NguoiDung();
+					nd.setQuyenhan(Integer.parseInt(role));
+					nd.setHovaten(userName);
+					nd.setTendangnhap(loginName);
+					nd.setMatkhau(password);
+					ndModel.insertNguoidung(nd);
+					request.setAttribute("registerState", "success");
+					System.out.println("(POST /NguoiDung?do=Them) Them: success");
+				} catch (Exception e){
+					request.setAttribute("registerState", "error");
+					System.out.println("(POST /NguoiDung?do=Them) Them: error");
+				}
+			}
+		}else {
 			response.sendRedirect("");
 		}
 		RequestDispatcher rd = request.getRequestDispatcher(url);
