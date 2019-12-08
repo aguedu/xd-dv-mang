@@ -42,7 +42,7 @@
 									</a>
 								</td>
 								<td class="text-center"><a href="NguoiDung?Chon=CapNhat&Id=<%= nd.getId() %>" title="Cập nhật thông tin"><i class="fas fa-edit text-success"></i></a></td>
-								<td class='text-center'><a data-toggle='modal' data-target='#deleteModal' href='#Xoa' onclick="doDelete(<%= nd.getId() %>)" title="Xóa người dùng"><i class='fas fa-trash-alt text-danger'></i></a></td>
+								<td class='text-center'><a href="NguoiDung?Chon=Xoa&Id=<%= nd.getId() %>" title="Xóa người dùng"><i class='fas fa-trash-alt text-danger'></i></a></td>
 							</tr>
 						<% stt++;
 						} // End for %>
@@ -53,9 +53,4 @@
 		<%@ include file="../layouts/footer.jsp" %>
 	</div>
 <%@ include file="../layouts/javascript.jsp" %>
-<script type="text/javascript">
-	function doDelete(id){
-		Swal.fire('Any fool can use a computer');
-	}
-</script>
 <%@ include file="../layouts/viewend.jsp" %>

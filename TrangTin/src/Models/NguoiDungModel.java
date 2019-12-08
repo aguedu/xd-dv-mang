@@ -56,7 +56,7 @@ public class NguoiDungModel {
 	// Them du lieu vao tbl_nguoidung
 	// Tra ve true neu them thanh cong
 	public boolean insertNguoidung(NguoiDung nd) throws Exception{
-		 String sql = "insert into tbl_nguoidung(HoVaTen, TenDangNhap, MatKhau, QuyenHan, Khoa) values(?,?,md5(?),?,?)";
+		 String sql = "insert into tbl_nguoidung(HoVaTen, TenDangNhap, MatKhau, QuyenHan, Khoa) values(N?,?,md5(?),?,?)";
 		 PreparedStatement pst = connect.prepareStatement(sql);
 		 pst.setString(1, nd.getHovaten());
 		 pst.setString(2, nd.getTendangnhap());
@@ -107,7 +107,7 @@ public class NguoiDungModel {
 	}
 	// Cap nhat nguoidung theo id
 	public boolean updateNguoidung(int id,NguoiDung newnd) throws Exception{
-		 String sql = "update tbl_nguoidung set HoVaTen=?, TenDangNhap=?, MatKhau=md5(?), QuyenHan=?, Khoa=? where ID=?";
+		 String sql = "update tbl_nguoidung set HoVaTen=N?, TenDangNhap=?, MatKhau=md5(?), QuyenHan=?, Khoa=? where ID=?";
 		 PreparedStatement pst = connect.prepareStatement(sql);
 		 pst.setString(1, newnd.getHovaten());
 		 pst.setString(2, newnd.getTendangnhap());
@@ -117,6 +117,18 @@ public class NguoiDungModel {
 		 pst.setInt(6, newnd.getId());
 		 return pst.executeUpdate()>0;
 	}
+	
+	// Cap nhat nguoidung theo id
+		public boolean updateNguoidungExceptPassword(int id,NguoiDung newnd) throws Exception{
+			 String sql = "update tbl_nguoidung set HoVaTen=N?, TenDangNhap=?, QuyenHan=?, Khoa=? where ID=?";
+			 PreparedStatement pst = connect.prepareStatement(sql);
+			 pst.setString(1, newnd.getHovaten());
+			 pst.setString(2, newnd.getTendangnhap());
+			 pst.setInt(3, newnd.getQuyenhan());
+			 pst.setInt(4, newnd.getKhoa());
+			 pst.setInt(5, newnd.getId());
+			 return pst.executeUpdate()>0;
+		}
 	
 	// Cap nhat khoa nguoidung theo id
 	public boolean khoaNguoidung(int id) throws Exception{

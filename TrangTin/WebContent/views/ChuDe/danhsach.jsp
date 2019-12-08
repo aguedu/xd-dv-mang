@@ -9,7 +9,7 @@
 		<div class="card mt-3 shadow-sm">
 			<h5 class="card-header alert-warning">Danh sách chủ đề</h5>
 			<div class="card-body">
-				<p><a class="btn btn-success" href="DangKy" role="button"><i class="fas fa-plus"></i> Thêm</a></p>
+				<p><a class="btn btn-success" href="ChuDe?Chon=Them" role="button"><i class="fas fa-plus"></i> Thêm</a></p>
 				<table class="table table-bordered table-striped table-sm">
 					<thead>
 						<tr>

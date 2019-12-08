@@ -2,6 +2,7 @@ package Controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.charset.Charset;
 
 import javax.print.attribute.ResolutionSyntax;
 import javax.servlet.RequestDispatcher;
@@ -136,11 +137,10 @@ public class NguoiDung extends HttpServlet {
 		String oldPassword = request.getParameter("txtMatKhauCu");
 		String newPassword = request.getParameter("txtMatKhauMoi");
 		String confirmPassword = request.getParameter("txtXacNhanMatKhau");
-		String userName = request.getParameter("txtHoVaTen");
-		if (userName != null) { userName = new String(userName.getBytes("ISO-8859-1"),"UTF-8"); } // Chuyển định dạng văn bản Encode UTF-8 
+		String userName = (String)request.getParameter("txtHoVaTen");
 		String role = request.getParameter("selectQuyenHan");
 		String loginName = request.getParameter("txtTenDangNhap");
-		// Khai báo dữ liệu bên trong phiên
+		String khoa = request.getParameter("khoa");		// Khai báo dữ liệu bên trong phiên
 		String oldUserName = (String)request.getSession().getAttribute("HoVaTen");
 		// Khai báo Model dùng chung
 		NguoiDungModel ndModel = null;
@@ -186,7 +186,7 @@ public class NguoiDung extends HttpServlet {
 							request.setAttribute("updateState", "error");
 							System.out.println("(POST /NguoiDung?do=CapNhatHoSo) CapNhatHoSo: error");
 						}else{
-							request.getSession(true).setAttribute("HoVaTen",userName);
+							request.getSession(true).setAttribute("HoVaTen",new String(userName.getBytes("ISO-8859-1"),"UTF-8"));
 							request.setAttribute("updateState", "success");
 							System.out.println("(POST /NguoiDung?do=CapNhatHoSo) CapNhatHoSo: success");
 						} // End else if
@@ -197,11 +197,10 @@ public class NguoiDung extends HttpServlet {
 					System.out.println("(POST /NguoiDung?do=CapNhatHoSo) CapNhatHoSo: error: "+e.getMessage());
 				}
 			}
-		}else if(chon.equals("Them")){
+		} else if(chon.equals("Them")){
 			System.out.println("(POST /NguoiDung?do=Them) Them");
 			url = "views/NguoiDung/dangky.jsp";
-			if(role != null && loginName != null && userName != null && password != null && password.equals(confirmPassword))
-			{
+			if(role != null && loginName != null && userName != null && password != null && password.equals(confirmPassword)){
 				System.out.println("(POST /NguoiDung?do=Them) Them: wait");
 				try{
 					ndModel = new NguoiDungModel();
@@ -209,13 +208,42 @@ public class NguoiDung extends HttpServlet {
 					nd.setQuyenhan(Integer.parseInt(role));
 					nd.setHovaten(userName);
 					nd.setTendangnhap(loginName);
+					nd.setKhoa(Integer.parseInt(khoa));
 					nd.setMatkhau(password);
-					ndModel.insertNguoidung(nd);
+					ndModel.updateNguoidung(id, nd);
 					request.setAttribute("registerState", "success");
 					System.out.println("(POST /NguoiDung?do=Them) Them: success");
 				} catch (Exception e){
 					request.setAttribute("registerState", "error");
 					System.out.println("(POST /NguoiDung?do=Them) Them: error");
+				}
+			}
+		} else if (chon.equals("CapNhat")) {
+			System.out.println("(POST /NguoiDung?do=CapNhat) CapNhat");
+			url = "views/NguoiDung/sua.jsp";
+			if(role != null && userName != null && khoa != null){
+				System.out.println("(POST /NguoiDung?do=CapNhat) CapNhat: wait");
+				try{
+					ndModel = new NguoiDungModel();
+					nd = new Classes.NguoiDung();
+					nd.setQuyenhan(Integer.parseInt(role));
+					nd.setHovaten(userName);
+					nd.setTendangnhap(loginName);
+					id = Integer.parseInt(request.getParameter("id"));
+					nd.setId(id);
+					if(password != null && password.equals(confirmPassword)){
+						nd.setMatkhau(password);
+						ndModel.updateNguoidung(id, nd);
+					}else{
+						ndModel.updateNguoidungExceptPassword(id, nd);
+					}
+					nd.setHovaten(new String(nd.getHovaten().getBytes("ISO-8859-1"),"UTF-8"));
+					request.setAttribute("nd", nd);
+					request.setAttribute("updateState", "success");
+					System.out.println("(POST /NguoiDung?do=CapNhat) CapNhat: success");
+				} catch (Exception e){
+					request.setAttribute("updateState", "error");
+					System.out.println("(POST /NguoiDung?do=CapNhat) CapNhat: error: "+e.getMessage());
 				}
 			}
 		}else {

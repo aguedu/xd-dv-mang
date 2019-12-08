@@ -35,6 +35,18 @@
 				    <label for="txtHoVaTen">Họ và tên</label>
 				    <input type="text" class="form-control" id="txtHoVaTen" name="txtHoVaTen" aria-describedby="txtHoVaTenHelp" value="<%= nd.getHovaten() %>" required>
 				    <small id="txtHoVaTenHelp" class="form-text text-muted d-none">Họ và tên không hợp lệ.</small>
+				  </div>
+				  <div class="form-group">
+				  <label for="QuyenHan">Quyền hạn</label>
+					<select class="custom-select" id="QuyenHan" name="selectQuyenHan" required>
+						<% if(nd.getQuyenhan()==1) {%>
+						<option value="1" selected>Quản trị viên</option>
+						<option value="2">Thành viên</option>
+						<% } else { %>
+						<option value="1">Quản trị viên</option>
+						<option value="2" selected>Thành viên</option>
+						<% } // End else if %>
+					</select>
 				  </div>	
 				  <div class="form-group">
 				    <label for="txtTenDangNhap">Tên đăng nhập</label>
@@ -49,6 +61,7 @@
 				    <label for="txtXacNhanMatKhau">Xác nhận mật khẩu</label>
 				    <input type="password" class="form-control" id="txtXacNhanMatKhau" name="txtXacNhanMatKhau">
 				  </div>
+				  <input type="hidden" name="khoa" value="<%= nd.getKhoa() %>"/>
 				  <input type="hidden" name="id" value="<%= nd.getId() %>"/>
 				  <input type="hidden" name="do" value="CapNhat"/>
 				  <button type="submit" class="btn btn-success">Cập nhật</button>  
